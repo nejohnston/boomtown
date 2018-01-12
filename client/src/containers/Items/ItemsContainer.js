@@ -23,20 +23,20 @@ export default class ItemsContainer extends Component {
 
       const combined = itemsList.map(item => {
         // for every item add a user property and set it to user
-        item.itemOwner = usersList.find(user => user.id === item.itemOwner);
-        // item.itemowner = { fullname, email };
+        item.itemowner = usersList.find(user => user.id === item.itemowner);
+        // item.itemowner = { ufullname, email };
         return item;
       });
       this.setState({ items: combined });
+
       // TODO: Merge the 2 lists together, into a single list.
       // Attach the new list to this component's state,
       // and pass that list into the Items commponent
       // The Items component should render the new list
+      console.log(this.state.items);
     });
   }
   render() {
-    return (
-        <Items list={this.state.items} />
-    );
+    return <Items list={this.state.items} />;
   }
 }

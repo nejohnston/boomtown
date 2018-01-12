@@ -10,9 +10,13 @@ import {
   CardText
 } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
+
+import moment from "moment";
+import Gravatar from "react-gravatar";
+
 import "./styles.css";
 
-const ItemCard = ({ item }) => (
+const ItemCard = ({ item, user }) => (
   <div className="itemCardWrapper">
     <Card>
       <CardMedia>
@@ -20,8 +24,8 @@ const ItemCard = ({ item }) => (
       </CardMedia>
       <CardHeader
         title={item.itemowner.fullname}
-        subtitle={item.created.substring(0, 10)}
-        avatar={item.imageurl}
+        subtitle={moment(item.created).fromNow()}
+        avatar={<Gravatar email={item.itemowner.email} />}
       />
       <CardTitle title={item.title} subtitle={item.tags[0]} />{" "}
       <CardText>{item.description}</CardText>
@@ -36,9 +40,8 @@ const ItemCard = ({ item }) => (
     </Card>
   </div>
 );
-
-ItemCard.propTypes = {
-  item: propTypes.array.isRequired
-};
+// ItemCard.propTypes = {
+//   item: propTypes.array.isRequired
+// };
 
 export default ItemCard;

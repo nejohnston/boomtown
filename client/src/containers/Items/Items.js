@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 
 import Masonry from "react-masonry-component";
 
 import ItemCard from "../../components/ItemCard/ItemCard";
 import ItemsContainer from "./ItemsContainer";
+
+import Gravatar from "react-gravatar";
 
 import "./styles.css";
 // export default class Items extends Component {
@@ -16,6 +18,7 @@ const masonryOptions = {
   enableResizableChildren: true,
   transitionDuration: 2000
 };
+
 const Items = ({ list }) => (
   <Masonry options={masonryOptions} className={"itemsWrapper"}>
     {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
@@ -30,8 +33,8 @@ const Items = ({ list }) => (
 //   </div>
 // );
 
-// Items.PropTypes = {
-//   list: PropTypes.array.isRequired
-// };
+Items.propTypes = {
+  list: propTypes.array.isRequired
+};
 
 export default Items;
