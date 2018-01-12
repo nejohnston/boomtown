@@ -16,11 +16,9 @@ const masonryOptions = {
   enableResizableChildren: true
 };
 const Items = ({ list }) => (
-  <div className={"itemsWrapper"}>
-    <Masonry>
-      {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
-    </Masonry>
-  </div>
+  <Masonry className={"itemsWrapper"}>
+    {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
+  </Masonry>
 );
 // export default ({ list }) => (
 //   <div>
