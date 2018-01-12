@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
+
 import {
   Card,
   CardActions,
@@ -12,7 +13,7 @@ import FlatButton from "material-ui/FlatButton";
 import "./styles.css";
 
 const ItemCard = ({ item }) => (
-  <div>
+  <div className="itemCardWrapper">
     <Card>
       <CardMedia>
         <img src={item.imageurl} alt="image" />

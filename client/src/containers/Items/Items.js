@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import Masonry from "react-masonry-component";
+
 import ItemCard from "../../components/ItemCard/ItemCard";
 import ItemsContainer from "./ItemsContainer";
 
+import "./styles.css";
 // export default class Items extends Component {
 //   render() {
 //     return <div> Items! </div>;
 //   }
 // }
+const masonryOptions = {
+  enableResizableChildren: true
+};
 const Items = ({ list }) => (
-  <div>
-    {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
+  <div className={"itemsWrapper"}>
+    <Masonry>
+      {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
+    </Masonry>
   </div>
 );
 // export default ({ list }) => (

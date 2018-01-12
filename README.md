@@ -16,4 +16,7 @@ From inside the `client` directory, run:
 npm run dev
 ```
 
+to open json-server
+json-server --watch db.json -p 4000
+
 Happy coding :)

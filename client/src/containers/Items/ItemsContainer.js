@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import Items from "./Items";
 import ItemCard from "../../components/ItemCard/ItemCard";
-import Masonry from "react-masonry-component";
 
 import "./styles.css";
 
@@ -37,9 +36,7 @@ export default class ItemsContainer extends Component {
   }
   render() {
     return (
-      <Masonry>
         <Items list={this.state.items} />
-      </Masonry>
     );
   }
 }
