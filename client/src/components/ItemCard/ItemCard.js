@@ -18,12 +18,12 @@ const ItemCard = ({ item }) => (
       <CardMedia>
         <img src={item.imageurl} alt="image" />
       </CardMedia>
-      <CardTitle title={item.title} subtitle={item.tags[0]} />{" "}
       <CardHeader
         title={item.itemowner.fullname}
         subtitle={item.created.substring(0, 10)}
         avatar={item.imageurl}
       />
+      <CardTitle title={item.title} subtitle={item.tags[0]} />{" "}
       <CardText>{item.description}</CardText>
       {/* <CardActions>
         <button className="borrow-button" label="Borrow">

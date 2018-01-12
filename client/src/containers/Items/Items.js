@@ -13,10 +13,11 @@ import "./styles.css";
 //   }
 // }
 const masonryOptions = {
-  enableResizableChildren: true
+  enableResizableChildren: true,
+  transitionDuration: 2000
 };
 const Items = ({ list }) => (
-  <Masonry className={"itemsWrapper"}>
+  <Masonry options={masonryOptions} className={"itemsWrapper"}>
     {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
   </Masonry>
 );
