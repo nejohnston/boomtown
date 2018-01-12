@@ -3,9 +3,6 @@ import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import registerServiceWorker from "./registerServiceWorker";
 
-import Items from "./containers/Items";
-import HeaderBar from "./components/HeaderBar";
-
 import {
   BrowserRouter as Router,
   Route,
@@ -19,11 +16,11 @@ import muiTheme from "./config/theme";
 
 import Layout from "./components/Layout";
 import Login from "./containers/Login";
+import Items from "./containers/Items";
 import ItemsContainer from "./containers/Items";
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
-    <HeaderBar />
     <Layout>
       <Router>
         <Switch>

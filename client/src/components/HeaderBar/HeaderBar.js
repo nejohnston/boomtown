@@ -18,21 +18,13 @@ export default class HeaderBar extends Component {
   render() {
     return (
       <Toolbar>
+        <ToolbarGroup firstChild={true} />
         <ToolbarGroup>
           <ToolbarTitle text="Options" />
           <FontIcon className="muidocs-icon-custom-sort" />
           <ToolbarSeparator />
-          <RaisedButton label="Create Broadcast" primary={true} />
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Download" />
-            <MenuItem primaryText="More Info" />
-          </IconMenu>
+          <RaisedButton label="My Profile" primary={true} />
+          <RaisedButton label="Logout" primary={true} />
         </ToolbarGroup>
       </Toolbar>
     );
