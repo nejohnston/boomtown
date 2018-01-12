@@ -1,4 +1,14 @@
+.headerBar {
+  flex-direction: column;
+}
 .headerLogo {
   height: 36px;
   width: auto;
+}
+
+@media only screen and (min-width: 600px) {
+  .headerBar {
+    flex-direction: row;
+    margin-left: 0;
+  }
 }

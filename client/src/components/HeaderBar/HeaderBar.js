@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import AppBar from "material-ui/AppBar";
 import IconMenu from "material-ui/IconMenu";
 import IconButton from "material-ui/IconButton";
 import FontIcon from "material-ui/FontIcon";
@@ -19,31 +20,31 @@ import Logo from "../../images/boomtown-logo.svg";
 
 import "./styles.css";
 
+const boomtownLogo = () => {};
+
 export default class HeaderBar extends Component {
   render() {
     return (
-      <Toolbar
+      <AppBar
+        className="headerBar"
         style={{
           backgroundColor: "#fff"
         }}
+        // iconElementLeft={{ boomtownLogo }}
       >
-        <ToolbarGroup firstChild={true} />
-        <ToolbarGroup>
-          <img src={Logo} className="headerLogo" />
-          <SelectField />
-        </ToolbarGroup>
-        <ToolbarGroup lastChild={false}>
-          <FontIcon className="muidocs-icon-custom-sort" />
-          <RaisedButton label="My Profile" primary={true} />
-          <RaisedButton
-            style={{
-              backgroundColor: "#000"
-            }}
-            label="Logout"
-            primary={true}
-          />
-        </ToolbarGroup>
-      </Toolbar>
+        <a href="/">
+          <img src={Logo} href={"/"} className="headerLogo" />
+        </a>
+        <SelectField floatingLabelText="Filter by Tag" />
+        <RaisedButton label="My Profile" primary={true} />
+        <RaisedButton
+          style={{
+            backgroundColor: "#000"
+          }}
+          label="Logout"
+          primary={true}
+        />
+      </AppBar>
     );
   }
 }
