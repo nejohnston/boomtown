@@ -13,18 +13,35 @@ import {
   ToolbarSeparator,
   ToolbarTitle
 } from "material-ui/Toolbar";
+import SelectField from "material-ui/SelectField";
+
+import Logo from "../../images/boomtown-logo.svg";
+
+import "./styles.css";
 
 export default class HeaderBar extends Component {
   render() {
     return (
-      <Toolbar>
+      <Toolbar
+        style={{
+          backgroundColor: "#fff"
+        }}
+      >
         <ToolbarGroup firstChild={true} />
         <ToolbarGroup>
-          <ToolbarTitle text="Options" />
+          <img src={Logo} className="headerLogo" />
+          <SelectField />
+        </ToolbarGroup>
+        <ToolbarGroup lastChild={false}>
           <FontIcon className="muidocs-icon-custom-sort" />
-          <ToolbarSeparator />
           <RaisedButton label="My Profile" primary={true} />
-          <RaisedButton label="Logout" primary={true} />
+          <RaisedButton
+            style={{
+              backgroundColor: "#000"
+            }}
+            label="Logout"
+            primary={true}
+          />
         </ToolbarGroup>
       </Toolbar>
     );
