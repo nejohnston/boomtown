@@ -12,3 +12,11 @@
     margin-left: 0;
   }
 }
+
+.headerButtonWrapper {
+  align-items: center;
+  display: flex;
+  margin-left: 1rem;
+  padding: 6px 0;
+  width: 100%;
+}
