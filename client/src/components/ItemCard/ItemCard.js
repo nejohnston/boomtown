@@ -27,7 +27,7 @@ const ItemCard = ({ item, user }) => (
         subtitle={moment(item.created).fromNow()}
         avatar={<Gravatar email={item.itemowner.email} />}
       />
-      <CardTitle title={item.title} subtitle={item.tags[0]} />{" "}
+      <CardTitle title={item.title} subtitle={item.tags} />{" "}
       <CardText>{item.description}</CardText>
       {/* <CardActions>
         <button className="borrow-button" label="Borrow">

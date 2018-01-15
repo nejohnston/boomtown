@@ -1,3 +1,8 @@
+.titleWrapper {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
 .headerBar {
   flex-direction: column;
 }
@@ -19,4 +24,13 @@
   margin-left: 1rem;
   padding: 6px 0;
   width: 100%;
+}
+
+.headerButton {
+  margin-right: 1rem;
+  line-height: 0;
+}
+
+.headerFilter {
+  margin-left: 2rem;
 }
