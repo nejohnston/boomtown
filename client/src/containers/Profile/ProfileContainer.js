@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import Profile from './Profile';
-import './styles';
+import React, { Component } from "react";
+import Profile from "./Profile";
 
-export default class Profile extends Component {
-    render() {
-        return <Profile />
-    }
+export default class ProfileContainer extends Component {
+  render() {
+    return <Profile />;
+  }
 }

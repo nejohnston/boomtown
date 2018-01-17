@@ -17,6 +17,8 @@ import Layout from "./components/Layout";
 import Login from "./containers/Login";
 import Items from "./containers/Items";
 import ItemsContainer from "./containers/Items";
+import Profile from "./containers/Profile";
+import ProfileContainer from "./containers/Profile";
 
 import "./index.css";
 
@@ -27,6 +29,11 @@ const Boomtown = () => (
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Items} />
+          <Route
+            exact
+            path="/profile/eEvh1WUF5nb5eeUksUQb3Ph0kOU2"
+            component={Profile}
+          />
           {/*
             <Route exact path="/profile/:userid" component={} />
             <Route exact path="/share" component={} />

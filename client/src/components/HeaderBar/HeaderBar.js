@@ -76,6 +76,7 @@ export default class HeaderBar extends Component {
             className="headerButton"
             label="My Profile"
             primary={true}
+            href="/profile/eEvh1WUF5nb5eeUksUQb3Ph0kOU2"
           />
           <RaisedButton
             className="headerButton"
