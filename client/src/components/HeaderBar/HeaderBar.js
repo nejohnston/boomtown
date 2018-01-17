@@ -11,7 +11,7 @@ import Logo from "../../images/boomtown-logo.svg";
 
 import "./styles.css";
 
-const Buttons = () => {
+const Buttons = props => {
   <div>
     <RaisedButton label="My Profile" primary={true} />
     <RaisedButton
@@ -33,35 +33,58 @@ export default class HeaderBar extends Component {
         style={{
           backgroundColor: "#fff"
         }}
-        iconElementLeft={
+        iconClassNameLeft={"iconClassNameLeft"}
+        // iconElementLeft={
+        //   <div>
+        //     <div className="titleWrapper">
+        //       <a href="/">
+        //         <img src={Logo} alt="Boomtown" className="headerLogo" />
+        //       </a>
+        //       <SelectField className="headerFilter" hintText="Filter by Tag" />
+        //     </div>
+        //   </div>
+        // }
+        // iconClassNameRight={"iconClassNameLeft"}
+        // iconElementRight={
+        //   <div className="headerButtonWrapper">
+        //     <RaisedButton
+        //       className="headerButton"
+        //       label="My Profile"
+        //       primary={true}
+        //     />
+        //     <RaisedButton
+        //       className="headerButton"
+        //       style={{
+        //         backgroundColor: "#000"
+        //       }}
+        //       label="Logout"
+        //       primary={true}
+        //     />
+        //   </div>
+        // }
+      >
+        <div>
           <div className="titleWrapper">
             <a href="/">
               <img src={Logo} alt="Boomtown" className="headerLogo" />
             </a>
-            <SelectField
-              className="headerFilter"
-              floatingLabelText="Filter by Tag"
-            />
+            <SelectField className="headerFilter" hintText="Filter by Tag" />
           </div>
-        }
-        iconElementRight={
-          <div className="headerButtonWrapper">
-            <RaisedButton
-              className="headerButton"
-              label="My Profile"
-              primary={true}
-            />
-            <RaisedButton
-              className="headerButton"
-              style={{
-                backgroundColor: "#000"
-              }}
-              label="Logout"
-              primary={true}
-            />
-          </div>
-        }
-      />
+        </div>
+        <div className="headerButtonWrapper">
+          <RaisedButton
+            className="headerButton"
+            label="My Profile"
+            primary={true}
+          />
+          <RaisedButton
+            className="headerButton"
+            backgroundColor="black"
+            label="Logout"
+            primary={true}
+          />
+        </div>
+      </AppBar>
     );
   }
 }

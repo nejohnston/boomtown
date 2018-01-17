@@ -11,13 +11,14 @@ import {
   Redirect
 } from "react-router-dom";
 
-import "./index.css";
 import muiTheme from "./config/theme";
 
 import Layout from "./components/Layout";
 import Login from "./containers/Login";
 import Items from "./containers/Items";
 import ItemsContainer from "./containers/Items";
+
+import "./index.css";
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>

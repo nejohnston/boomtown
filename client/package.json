@@ -1,11 +1,13 @@
 {
   "name": "boomtown-starter",
-    "quokka": {
+  "quokka": {
     "babel": true
   },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
     "concurrently": "^3.5.0",
     "json-server": "^0.12.0",
     "material-ui": "^0.19.4",
