@@ -27,42 +27,41 @@ const Buttons = () => {
 export default class HeaderBar extends Component {
   render() {
     return (
-      <div>
-        <AppBar
-          className="headerBar"
-          style={{
-            backgroundColor: "#fff"
-          }}
-          iconElementLeft={
-            <div className="titleWrapper">
-              <a href="/">
-                <img src={Logo} alt="Boomtown" className="headerLogo" />
-              </a>
-              <SelectField
-                className="headerFilter"
-                floatingLabelText="Filter by Tag"
-              />
-            </div>
-          }
-          iconElementRight={
-            <div className="headerButtonWrapper">
-              <RaisedButton
-                className="headerButton"
-                label="My Profile"
-                primary={true}
-              />
-              <RaisedButton
-                className="headerButton"
-                style={{
-                  backgroundColor: "#000"
-                }}
-                label="Logout"
-                primary={true}
-              />
-            </div>
-          }
-        />
-      </div>
+      <AppBar
+        showMenuIconButton={false}
+        className="headerBar"
+        style={{
+          backgroundColor: "#fff"
+        }}
+        iconElementLeft={
+          <div className="titleWrapper">
+            <a href="/">
+              <img src={Logo} alt="Boomtown" className="headerLogo" />
+            </a>
+            <SelectField
+              className="headerFilter"
+              floatingLabelText="Filter by Tag"
+            />
+          </div>
+        }
+        iconElementRight={
+          <div className="headerButtonWrapper">
+            <RaisedButton
+              className="headerButton"
+              label="My Profile"
+              primary={true}
+            />
+            <RaisedButton
+              className="headerButton"
+              style={{
+                backgroundColor: "#000"
+              }}
+              label="Logout"
+              primary={true}
+            />
+          </div>
+        }
+      />
     );
   }
 }
