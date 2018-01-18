@@ -38,6 +38,6 @@ export default class ItemsContainer extends Component {
     });
   }
   render() {
-    return <Profile list={this.state.items} />;
+    return <Profile itemsData={this.state.items} />;
   }
 }

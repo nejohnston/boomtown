@@ -8,11 +8,11 @@ import Paper from "material-ui/Paper";
 
 import "../Profile/styles.css";
 
-const Profile = ({ list, item, user }) => {
+const Profile = ({ itemsData, item, user }) => {
   return (
     <div className="profile">
-      <Paper />
-      <Items list={list} />
+      <Paper>me</Paper>
+      <Items itemsData={itemsData} />
     </div>
   );
 };

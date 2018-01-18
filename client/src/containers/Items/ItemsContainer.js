@@ -1,42 +1,27 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
+import { fetchItemsAndUsers } from "../../redux/modules/items";
 import Items from "./Items";
-import ItemCard from "../../components/ItemCard/ItemCard";
 
 import "./styles.css";
 
-const ITEMS_URL = "http://localhost:4000/items";
-const USERS_URL = "http://localhost:4000/users";
-export default class ItemsContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      items: []
-    };
-  }
+class ItemsContainer extends Component {
+  static propTypes = {};
   componentDidMount() {
-    const items = fetch(ITEMS_URL).then(r => r.json());
-    const users = fetch(USERS_URL).then(r => r.json());
-
-    Promise.all([items, users]).then(response => {
-      const [itemsList, usersList] = response;
-
-      const combined = itemsList.map(item => {
-        // for every item add a user property and set it to user
-        item.itemowner = usersList.find(user => user.id === item.itemowner);
-        // item.itemowner = { ufullname, email };
-        return item;
-      });
-      this.setState({ items: combined });
-
-      // TODO: Merge the 2 lists together, into a single list.
-      // Attach the new list to this component's state,
-      // and pass that list into the Items commponent
-      // The Items component should render the new list
-      console.log(this.state.items);
-    });
+    this.props.dispatch(fetchItemsAndUsers());
   }
   render() {
-    return <Items list={this.state.items} />;
+    // if (this.props.isLoading) return <Loader />;
+    return <Items itemsData={this.props.itemsData} />;
   }
 }
+
+const mapStateToProps = state => ({
+  isLoading: state.items.isLoading,
+  itemsData: state.items.itemsData,
+  error: state.items.error
+});
+
+export default connect(mapStateToProps)(ItemsContainer);

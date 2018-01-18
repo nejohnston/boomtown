@@ -19,22 +19,23 @@ const masonryOptions = {
   transitionDuration: 2000
 };
 
-const Items = ({ list }) => (
+const Items = ({ itemsData }) => (
   <Masonry options={masonryOptions} className={"itemsWrapper"}>
-    {list.length && list.map(item => <ItemCard key={item.id} item={item} />)}
+    {itemsData.length &&
+      itemsData.map(item => <ItemCard key={item.id} item={item} />)}
   </Masonry>
 );
-// export default ({ list }) => (
+// export default ({ itemsData }) => (
 //   <div>
-//     {list.length &&
-//       list.map(item => {
+//     {itemsData.length &&
+//       itemsData.map(item => {
 //         return <ItemCard item={item.id} key={item.id} />;
 //       })}
 //   </div>
 // );
 
 Items.propTypes = {
-  list: propTypes.array.isRequired
+  itemsData: propTypes.array.isRequired
 };
 
 export default Items;

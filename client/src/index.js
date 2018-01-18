@@ -11,6 +11,9 @@ import {
   Redirect
 } from "react-router-dom";
 
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 import muiTheme from "./config/theme";
 
 import Layout from "./components/Layout";
@@ -24,19 +27,21 @@ import "./index.css";
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
-    <Layout>
-      <Router>
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Items} />
-          <Route exact path="/profile" component={Profile} />
-          {/*
+    <Provider store={store}>
+      <Layout>
+        <Router>
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Items} />
+            <Route exact path="/profile" component={Profile} />
+            {/*
             <Route exact path="/profile/:userid" component={Profile} />
             <Route exact path="/share" component={} />
           */}
-        </Switch>
-      </Router>
-    </Layout>
+          </Switch>
+        </Router>
+      </Layout>
+    </Provider>
   </MuiThemeProvider>
 );
 
