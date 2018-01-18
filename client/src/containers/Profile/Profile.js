@@ -1,8 +1,18 @@
 import React, { Component } from "react";
+
+import ItemCard from "../../components/ItemCard";
+import Items from "../Items/Items";
+
+import Paper from "material-ui/Paper";
+
 import "../Profile/styles.css";
 
-export default class Profile extends Component {
-  render() {
-    return <div> Profile! </div>;
-  }
-}
+const Profile = ({ list }) => {
+  return (
+    <div className="profile">
+      <Items list={list} />
+    </div>
+  );
+};
+
+export default Profile;
