@@ -24,9 +24,7 @@ export default class ItemsContainer extends Component {
       const [itemsList, usersList] = response;
 
       const combined = itemsList.map(item => {
-        // for every item add a user property and set it to user
         item.itemowner = usersList.find(user => user.id === item.itemowner);
-        // item.itemowner = { ufullname, email };
         return item;
       });
 

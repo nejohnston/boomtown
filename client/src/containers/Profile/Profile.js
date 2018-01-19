@@ -16,7 +16,10 @@ const Profile = ({ itemsData, user }) => {
   const profileUser = itemsData[0].itemowner;
   return (
     <div className="profile">
-      <ProfileCard user={profileUser} />
+      <div className="profileCardWrapper">
+        <ProfileCard user={profileUser} />
+      </div>
+
       <div>
         <ItemCardList itemsData={itemsData} />
       </div>
