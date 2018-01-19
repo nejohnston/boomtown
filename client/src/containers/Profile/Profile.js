@@ -16,13 +16,7 @@ const Profile = ({ itemsData, user }) => {
   const profileUser = itemsData[0].itemowner;
   return (
     <div className="profile">
-      <div>
-        <ProfileCard user={profileUser} />
-      </div>
-      {/* <ProfileCard itemsData={itemsData} item={item} user={user} /> */}
-      <div>
-        <Items itemsData={itemsData} />
-      </div>
+      <ProfileCard user={profileUser} />
     </div>
   );
 };

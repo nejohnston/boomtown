@@ -15,11 +15,11 @@ import Gravatar from "react-gravatar";
 import "../Profile/styles.css";
 
 const ProfileCard = ({ user }) => (
-  <div className="itemCardWrapper">
+  <div className="profileCardWrapper">
     <Card>
       <CardHeader
         title={user.fullname}
-        avatar={<Gravatar email={user.email} />}
+        avatar={<Gravatar email={user.email} size={200} />}
       />
     </Card>
   </div>
