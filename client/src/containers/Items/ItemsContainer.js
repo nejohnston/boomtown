@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { fetchItemsAndUsers } from "../../redux/modules/items";
 import Items from "./Items";
+import ItemCardList from "../../components/ItemCardList";
 
 import "./styles.css";
 
@@ -14,7 +15,7 @@ class ItemsContainer extends Component {
   }
   render() {
     // if (this.props.isLoading) return <Loader />;
-    return <Items itemsData={this.props.itemsData} />;
+    return <ItemCardList itemsData={this.props.itemsData} />;
   }
 }
 

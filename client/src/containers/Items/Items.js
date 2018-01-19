@@ -6,7 +6,7 @@ import ItemCardList from "../../components/ItemCardList";
 
 const Items = ({ itemsData, isLoading }) => {
   return !isLoading ? (
-    <ItemCardList items={items} />
+    <ItemCardList items={itemsData} />
   ) : (
     <div className="loading-wrapper">
       <CircularProgress color="white" />

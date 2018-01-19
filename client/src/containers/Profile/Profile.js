@@ -17,6 +17,9 @@ const Profile = ({ itemsData, user }) => {
   return (
     <div className="profile">
       <ProfileCard user={profileUser} />
+      <div>
+        <ItemCardList itemsData={this.props.itemsData} />
+      </div>
     </div>
   );
 };
