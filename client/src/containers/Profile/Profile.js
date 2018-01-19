@@ -13,13 +13,12 @@ import "../Profile/styles.css";
 
 const Profile = ({ itemsData, user }) => {
   console.log(itemsData);
-  const profileUser = itemsData[0].itemowner;
+  const profileUser = itemsData.itemowner;
   return (
     <div className="profile">
       <div className="profileCardWrapper">
-        <ProfileCard user={profileUser} />
+        <ProfileCard user={user} />
       </div>
-
       <div>
         <ItemCardList itemsData={itemsData} />
       </div>

@@ -14,7 +14,7 @@ import Gravatar from "react-gravatar";
 
 import "../Profile/styles.css";
 
-const ProfileCard = ({ user }) => (
+const ProfileCard = user => (
   <div className="profileCardWrapper">
     <Card>
       <CardHeader
