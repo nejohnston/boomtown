@@ -2,6 +2,7 @@
 
 const GET_PROFILE_LOADING = "GET_PROFILE_LOADING";
 const GET_PROFILE = "GET_PROFILE";
+const GET_PROFILE_ERROR = "GET_PROFILE_ERROR";
 
 // ACTION CREATORS
 
@@ -20,23 +21,30 @@ export const getProfileError = error => ({
 });
 
 // ASYNC ACTION CREATOR
-export const fetchItemsAndUsers = () => dispatch => {
-  dispatch(getPROFILELoading());
+export const fetchItemsAndUsers = userid => dispatch => {
+  dispatch(getProfileLoading());
 
   return Promise.all(
-    ["http://localhost:4000/items", "http://localhost:4000/users/"].map(url =>
-      fetch(url).then(response => response.json())
-    )
+    [
+      "http://localhost:4000/items/?itemowner=${userid}",
+      "http://localhost:4000/users/"
+    ].map(url => fetch(url).then(response => response.json()))
   )
     .then(json => {
       const [itemsData, users] = json;
-      const ProfileWithOwners = itemsData.map(item => {
-        const itemowner = users.filter(user => user.id === item.itemowner);
+
+      const ProfileWithOwner = itemsData.map(item => {
+        const itemowner = users.find(user => user.id === item.itemowner);
+
+        if (item.borrower) {
+          item.borrower = users.find(user => user.id === item.borrower);
+        }
         item.itemowner = itemowner[0];
         return item;
+        console.log(item);
       });
 
-      dispatch(getProfile(ProfileWithOwners));
+      dispatch(getProfile(ProfileWithOwner));
     })
     .catch(error => dispatch(getProfileError(error)));
 };
@@ -64,7 +72,11 @@ export default (
       };
     }
     case GET_PROFILE_ERROR: {
-      return { ...state, isLoading: false, error: action.payload };
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
     }
     default:
       return state;

@@ -18,7 +18,7 @@ const Profile = ({ itemsData, user }) => {
     <div className="profile">
       <ProfileCard user={profileUser} />
       <div>
-        <ItemCardList itemsData={this.props.itemsData} />
+        <ItemCardList itemsData={itemsData} />
       </div>
     </div>
   );
