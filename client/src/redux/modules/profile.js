@@ -23,23 +23,21 @@ export const getProfileError = error => ({
 // ASYNC ACTION CREATOR
 export const fetchItemsAndUsers = userid => dispatch => {
   dispatch(getProfileLoading());
-
   return Promise.all(
     [
-      "http://localhost:4000/items/?itemowner=${userid}",
+      `http://localhost:4000/items/?itemowner=${userid}`,
       "http://localhost:4000/users/"
     ].map(url => fetch(url).then(response => response.json()))
   )
     .then(json => {
-      const [itemsData, users] = json;
+      const [itemsList, usersList] = json;
 
-      const ProfileWithOwner = itemsData.map(item => {
-        const itemowner = users.find(user => user.id === item.itemowner);
+      const ProfileWithOwner = itemsList.map(item => {
+        const itemowner = usersList.find(user => user.id === item.itemowner);
 
         if (item.borrower) {
-          item.borrower = users.find(user => user.id === item.borrower);
+          item.borrower = usersList.find(user => user.id === item.borrower);
         }
-        item.itemowner = itemowner[0];
         return item;
         console.log(item);
       });

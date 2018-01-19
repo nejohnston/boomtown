@@ -18,9 +18,9 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.items.isLoading,
-  itemsData: state.items.itemsData,
-  error: state.items.error
+  isLoading: state.profile.isLoading,
+  itemsData: state.profile.itemsData,
+  error: state.profile.error
 });
 
 export default connect(mapStateToProps)(ProfileContainer);

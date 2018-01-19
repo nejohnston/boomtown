@@ -19,6 +19,7 @@ const Profile = ({ itemsData, user }) => {
       <div className="profileCardWrapper">
         <ProfileCard user={user} />
       </div>
+
       <div>
         <ItemCardList itemsData={itemsData} />
       </div>
