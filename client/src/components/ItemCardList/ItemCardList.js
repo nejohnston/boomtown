@@ -1,7 +1,24 @@
-import React, { Component } from React;
+import React, { Component } from "react";
 
-export default class ItemCardList extends Component {
-    render() {
-        return <div>Item Card List!</div>
-    }
-}
+import Items from "../../containers/Items";
+import ItemsContainer from "../../containers/Items";
+
+import FloatingActionButton from "material-ui/FloatingActionButton";
+import ContentAdd from "material-ui/svg-icons/content/add";
+
+const ItemCardList = () => {
+  return (
+    <div>
+      <div>
+        <ItemsContainer />
+      </div>
+      <div>
+        <FloatingActionButton>
+          <ContentAdd />
+        </FloatingActionButton>
+      </div>
+    </div>
+  );
+};
+
+export default ItemCardList;

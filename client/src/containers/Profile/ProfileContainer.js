@@ -38,6 +38,10 @@ export default class ItemsContainer extends Component {
     });
   }
   render() {
-    return <Profile itemsData={this.state.items} />;
+    if (this.state.items.length === 0) {
+      return false;
+    } else {
+      return <Profile itemsData={this.state.items} />;
+    }
   }
 }
