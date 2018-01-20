@@ -11,13 +11,13 @@ import Paper from "material-ui/Paper";
 
 import "../Profile/styles.css";
 
-const Profile = ({ itemsData, user }) => {
+const Profile = ({ itemsData }) => {
   console.log(itemsData);
   const profileUser = itemsData.itemowner;
   return (
     <div className="profile">
       <div className="profileCardWrapper">
-        <ProfileCard user={user} />
+        <ProfileCard user={itemsData} />
       </div>
 
       <div>

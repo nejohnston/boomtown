@@ -13,7 +13,12 @@ class ProfileContainer extends Component {
     this.props.dispatch(fetchItemsAndUsers(this.props.match.params.userid));
   }
   render() {
-    return <Profile itemsData={this.props.itemsData} />;
+    return (
+      <Profile
+        itemsData={this.props.itemsData}
+        usersList={this.props.usersList}
+      />
+    );
   }
 }
 

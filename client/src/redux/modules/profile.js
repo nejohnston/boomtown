@@ -31,7 +31,7 @@ export const fetchItemsAndUsers = userid => dispatch => {
   )
     .then(json => {
       const [itemsList, usersList] = json;
-
+      console.log(usersList);
       const ProfileWithOwner = itemsList.map(item => {
         const itemowner = usersList.find(user => user.id === item.itemowner);
 

@@ -3,6 +3,7 @@
 const GET_ITEMS_LOADING = "GET_ITEMS_LOADING";
 const GET_ITEMS = "GET_ITEMS";
 const GET_ITEMS_ERROR = "GET_ITEMS_ERROR";
+const GET_FILTERED = "GET_ITEMS_FILTERED";
 
 // ACTION CREATORS
 
@@ -19,6 +20,11 @@ export const getItemsError = error => ({
   type: GET_ITEMS_ERROR,
   payload: error
 });
+
+// export const getItemsFiltered = error => ({
+//   type: GET_ITEMS_FILTERED,
+//   payload: error
+// });
 
 // ASYNC ACTION CREATOR
 export const fetchItemsAndUsers = () => dispatch => {
@@ -67,6 +73,9 @@ export default (
     case GET_ITEMS_ERROR: {
       return { ...state, isLoading: false, error: action.payload };
     }
+    // case GET_ITEMS_FILTERED {
+    //   return { ...state }
+    // }
     default:
       return state;
   }
