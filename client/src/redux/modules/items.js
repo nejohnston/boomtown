@@ -3,7 +3,7 @@
 const GET_ITEMS_LOADING = "GET_ITEMS_LOADING";
 const GET_ITEMS = "GET_ITEMS";
 const GET_ITEMS_ERROR = "GET_ITEMS_ERROR";
-const GET_TAGS = "GET_ITEMS_TAGS";
+const GET_ITEM_TAG = "GET_ITEM_TAG";
 
 // ACTION CREATORS
 
@@ -21,9 +21,9 @@ export const getItemsError = error => ({
   payload: error
 });
 
-export const getTags = tags => ({
-  type: GET_TAGS,
-  payload: tags
+export const getItemTag = tag => ({
+  type: GET_ITEM_TAG,
+  payload: tag
 });
 
 // ASYNC ACTION CREATOR
@@ -74,8 +74,8 @@ export default (
     case GET_ITEMS_ERROR: {
       return { ...state, isLoading: false, error: action.payload };
     }
-    case GET_TAGS {
-      return { ...state, itemTags };
+    case GET_ITEM_TAG: {
+      return { ...state, itemTags: action.payload };
     }
     default:
       return state;
