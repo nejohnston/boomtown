@@ -11,7 +11,6 @@ class ProfileContainer extends Component {
   static propTypes = {};
   componentDidMount() {
     this.props.dispatch(fetchItemsAndUsers(this.props.match.params.userid));
-    console.log(this.props.match.params.userid);
     const itemowner = this.props.itemsData.find(user => {
       user.id === this.props.itemsData;
       return user;

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import store from "../../redux/store";
+
 import PropTypes from "prop-types";
 
 import { fetchItemsAndUsers } from "../../redux/modules/items";
@@ -25,5 +27,4 @@ const mapStateToProps = state => ({
   itemTags: state.items.itemTags,
   error: state.items.error
 });
-
 export default connect(mapStateToProps)(ItemsContainer);

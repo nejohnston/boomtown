@@ -13,6 +13,23 @@ import Logo from "../../images/boomtown-logo.svg";
 
 import "./styles.css";
 
+const HeaderButtons = () => (
+  <div className="headerButtonWrapper">
+    <RaisedButton
+      className="headerButton"
+      label="My Profile"
+      primary={true}
+      href="/profile"
+    />
+    <RaisedButton
+      className="headerButton"
+      backgroundColor="black"
+      label="Logout"
+      primary={true}
+    />
+  </div>
+);
+
 export default class HeaderBar extends Component {
   render() {
     return (
@@ -32,20 +49,7 @@ export default class HeaderBar extends Component {
             <FilterField />
           </div>
         </div>
-        <div className="headerButtonWrapper">
-          <RaisedButton
-            className="headerButton"
-            label="My Profile"
-            primary={true}
-            href="/profile"
-          />
-          <RaisedButton
-            className="headerButton"
-            backgroundColor="black"
-            label="Logout"
-            primary={true}
-          />
-        </div>
+        <HeaderButtons />
       </AppBar>
     );
   }
