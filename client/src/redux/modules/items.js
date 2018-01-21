@@ -21,9 +21,13 @@ export const getItemsError = error => ({
   payload: error
 });
 
-export const getItemTag = tag => ({
+// Actions are payloads of information that send data from your
+// application to your store. They are the only source of information
+// for the store. You send them to the store using store.dispatch().
+
+export const getItemTag = itemTag => ({
   type: GET_ITEM_TAG,
-  payload: tag
+  payload: itemTag
 });
 
 // ASYNC ACTION CREATOR
@@ -34,18 +38,17 @@ export const fetchItemsAndUsers = () => dispatch => {
     ["http://localhost:4000/items", "http://localhost:4000/users/"].map(url =>
       fetch(url).then(response => response.json())
     )
-  )
-    .then(json => {
-      const [itemsData, users] = json;
-      const itemsWithOwners = itemsData.map(item => {
-        const itemowner = users.filter(user => user.id === item.itemowner);
-        item.itemowner = itemowner[0];
-        return item;
-      });
+  ).then(json => {
+    const [itemsData, users] = json;
+    const itemsWithOwners = itemsData.map(item => {
+      const itemowner = users.filter(user => user.id === item.itemowner);
+      item.itemowner = itemowner[0];
+      return item;
+    });
 
-      dispatch(getItems(itemsWithOwners));
-    })
-    .catch(error => dispatch(getItemsError(error)));
+    dispatch(getItems(itemsWithOwners));
+  });
+  .catch(error => dispatch(getItemsError(error)));
 };
 
 // REDUCER
