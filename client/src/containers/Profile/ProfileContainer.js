@@ -11,12 +11,21 @@ class ProfileContainer extends Component {
   static propTypes = {};
   componentDidMount() {
     this.props.dispatch(fetchItemsAndUsers(this.props.match.params.userid));
+
+    //  const ProfileWithOwner = itemsData.map(item => {
+    // const itemowner = usersList.filter(user => user.id === item.itemowner);
+    // item.itemowner = itemowner[0];
+    const itemowner = this.props.itemsData.find(user => {
+      user.id === this.props.itemsData;
+      return user;
+    });
   }
   render() {
     return (
       <Profile
         itemsData={this.props.itemsData}
-        usersList={this.props.usersList}
+        userId={this.props.match.params.userid}
+        isLoading={this.props.isLoading}
       />
     );
   }

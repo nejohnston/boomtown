@@ -14,12 +14,18 @@ import Gravatar from "react-gravatar";
 
 import "../Profile/styles.css";
 
-const ProfileCard = ({ item, user }) => (
+const ProfileCard = ({ item }) => (
   <div className="profileCardWrapper">
     <Card>
       <CardHeader
-        title={user.fullname}
-        avatar={<Gravatar email={user.email} size={200} />}
+        title={item.itemowner.fullname}
+        avatar={
+          <Gravatar
+            className="gravatarAvatar"
+            email={item.itemowner.email}
+            size={180}
+          />
+        }
       />
     </Card>
   </div>

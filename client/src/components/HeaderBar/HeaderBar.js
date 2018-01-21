@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import FilterField from "../FilterField/FilterField";
+
 import AppBar from "material-ui/AppBar";
 import FontIcon from "material-ui/FontIcon";
 import MenuItem from "material-ui/MenuItem";
@@ -68,7 +70,7 @@ export default class HeaderBar extends Component {
             <a href="/">
               <img src={Logo} alt="Boomtown" className="headerLogo" />
             </a>
-            <SelectField className="headerFilter" hintText="Filter by Tag" />
+            <FilterField />
           </div>
         </div>
         <div className="headerButtonWrapper">

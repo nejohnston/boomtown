@@ -30,18 +30,17 @@ export const fetchItemsAndUsers = userid => dispatch => {
     ].map(url => fetch(url).then(response => response.json()))
   )
     .then(json => {
-      const [itemsList, usersList] = json;
-      console.log(usersList);
-      const ProfileWithOwner = itemsList.map(item => {
-        const itemowner = usersList.find(user => user.id === item.itemowner);
-
-        if (item.borrower) {
-          item.borrower = usersList.find(user => user.id === item.borrower);
-        }
+      //   console.log(userid);
+      const [itemsData, usersList] = json;
+      const ProfileWithOwner = itemsData.map(item => {
+        const itemowner = usersList.filter(user => user.id === item.itemowner);
+        item.itemowner = itemowner[0];
+        // if (item.borrower) {
+        //   item.borrower = usersList.find(user => user.id === item.borrower);
+        // }
+        // console.log(itemowner);
         return item;
-        console.log(item);
       });
-
       dispatch(getProfile(ProfileWithOwner));
     })
     .catch(error => dispatch(getProfileError(error)));

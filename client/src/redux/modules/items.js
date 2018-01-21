@@ -47,7 +47,6 @@ export const fetchItemsAndUsers = () => dispatch => {
     })
     .catch(error => dispatch(getItemsError(error)));
 };
-
 // REDUCER
 
 export default (
