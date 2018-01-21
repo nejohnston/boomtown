@@ -3,7 +3,7 @@
 const GET_ITEMS_LOADING = "GET_ITEMS_LOADING";
 const GET_ITEMS = "GET_ITEMS";
 const GET_ITEMS_ERROR = "GET_ITEMS_ERROR";
-const GET_FILTERED = "GET_ITEMS_FILTERED";
+const GET_TAGS = "GET_ITEMS_TAGS";
 
 // ACTION CREATORS
 
@@ -21,10 +21,10 @@ export const getItemsError = error => ({
   payload: error
 });
 
-// export const getItemsFiltered = error => ({
-//   type: GET_ITEMS_FILTERED,
-//   payload: error
-// });
+export const getTags = tags => ({
+  type: GET_TAGS,
+  payload: tags
+});
 
 // ASYNC ACTION CREATOR
 export const fetchItemsAndUsers = () => dispatch => {
@@ -47,12 +47,14 @@ export const fetchItemsAndUsers = () => dispatch => {
     })
     .catch(error => dispatch(getItemsError(error)));
 };
+
 // REDUCER
 
 export default (
   state = {
     isLoading: false,
     itemsData: [],
+    itemTags: [],
     error: ""
   },
   action
@@ -72,9 +74,9 @@ export default (
     case GET_ITEMS_ERROR: {
       return { ...state, isLoading: false, error: action.payload };
     }
-    // case GET_ITEMS_FILTERED {
-    //   return { ...state }
-    // }
+    case GET_TAGS {
+      return { ...state, itemTags };
+    }
     default:
       return state;
   }
