@@ -22,6 +22,7 @@ class ItemsContainer extends Component {
 const mapStateToProps = state => ({
   isLoading: state.items.isLoading,
   itemsData: state.items.itemsData,
+  itemTags: state.items.itemTags,
   error: state.items.error
 });
 
