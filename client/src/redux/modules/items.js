@@ -87,8 +87,7 @@ export default (
       return { ...state, isLoading: false, error: action.payload };
     }
     case GET_ITEM_TAG: {
-      const itemTags = action.payload;
-      return { ...state, itemTags };
+      return { ...state, itemTags: action.payload };
     }
     default:
       return state;

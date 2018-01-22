@@ -35,10 +35,11 @@ export const fetchItemsAndUsers = userid => dispatch => {
       const ProfileWithOwner = itemsData.map(item => {
         const itemowner = usersList.filter(user => user.id === item.itemowner);
         item.itemowner = itemowner[0];
-        // if (item.borrower) {
-        //   item.borrower = usersList.find(user => user.id === item.borrower);
-        // }
-        // console.log(itemowner);
+        const itemBorrower = itemsData.filter(
+          item => item.borrower === item.itemowner
+        ).length;
+        console.log(itemBorrower);
+
         return item;
       });
       dispatch(getProfile(ProfileWithOwner));
