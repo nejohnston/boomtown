@@ -17,7 +17,13 @@ class ItemsContainer extends Component {
   }
   render() {
     // if (this.props.isLoading) return <Loader />;
-    return <ItemCardList itemsData={this.props.itemsData} />;
+    return (
+      <ItemCardList
+        isLoading={this.props.isLoading}
+        itemsData={this.props.itemsData}
+        itemTags={this.props.itemTags}
+      />
+    );
   }
 }
 

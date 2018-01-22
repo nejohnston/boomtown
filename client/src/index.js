@@ -29,8 +29,8 @@ import "./index.css";
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
     <Provider store={store}>
-      <Layout>
-        <Router>
+      <Router>
+        <Layout>
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/" component={ItemsContainer} />
@@ -40,8 +40,8 @@ const Boomtown = () => (
             <Route exact path="/share" component={} />
           */}
           </Switch>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </Provider>
   </MuiThemeProvider>
 );

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
-import FilterField from "../FilterField/FilterField";
+import { connect } from "react-redux";
+import { getItemTags } from "../../redux/modules/items";
+
+import Filter from "../FilterField/FilterField";
 
 import AppBar from "material-ui/AppBar";
 import FontIcon from "material-ui/FontIcon";
@@ -11,6 +14,8 @@ import SvgIcon from "material-ui/SvgIcon";
 
 import Logo from "../../images/boomtown-logo.svg";
 
+import { Link, Route } from "react-router-dom";
+
 import "./styles.css";
 
 const HeaderButtons = () => (
@@ -19,7 +24,7 @@ const HeaderButtons = () => (
       className="headerButton"
       label="My Profile"
       primary={true}
-      href="/profile"
+      href="/profile/k721A4pRNggCx7b6ryEE8vx1VIi1"
     />
     <RaisedButton
       className="headerButton"
@@ -30,27 +35,44 @@ const HeaderButtons = () => (
   </div>
 );
 
-export default class HeaderBar extends Component {
-  render() {
-    return (
-      <AppBar
-        showMenuIconButton={false}
-        className="headerBar"
-        style={{
-          backgroundColor: "#fff"
-        }}
-        iconClassNameLeft={"iconClassNameLeft"}
-      >
-        <div>
-          <div className="titleWrapper">
-            <a href="/">
-              <img src={Logo} alt="Boomtown" className="headerLogo" />
-            </a>
-            <FilterField />
-          </div>
+const HeaderBar = ({ isLoading, itemTags, dispatch }) => {
+  return (
+    <AppBar
+      showMenuIconButton={false}
+      className="headerBar"
+      style={{
+        backgroundColor: "#fff"
+      }}
+      iconClassNameLeft={"iconClassNameLeft"}
+    >
+      <div>
+        <div className="titleWrapper">
+          <a href="/">
+            <img src={Logo} alt="Boomtown" className="headerLogo" />
+          </a>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Filter
+                handleChange={(event, index, tags) => {
+                  dispatch(getItemTags(tags));
+                }}
+                isLoading={isLoading}
+                values={itemTags}
+              />
+            )}
+          />
         </div>
-        <HeaderButtons />
-      </AppBar>
-    );
-  }
-}
+      </div>
+      <HeaderButtons />
+    </AppBar>
+  );
+};
+
+const mapStateToProps = state => ({
+  isLoading: state.items.isLoading,
+  itemTags: state.items.itemTags
+});
+
+export default connect(mapStateToProps)(HeaderBar);

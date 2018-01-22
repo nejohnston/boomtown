@@ -17,18 +17,23 @@ const masonryOptions = {
   transitionDuration: 2000
 };
 
-const ItemCardList = ({ itemsData }) => {
-  return (
-    <div className="itemsWrapper">
-      <Masonry options={masonryOptions}>
-        {itemsData.length &&
-          itemsData.map(item => <ItemCard key={item.id} item={item} />)}
-      </Masonry>
-      <FloatingActionButton>
-        <ContentAdd />
-      </FloatingActionButton>
-    </div>
-  );
-};
+const ItemCardList = ({ itemsData, itemTags }) => (
+  <div className="itemsWrapper">
+    <Masonry options={masonryOptions}>
+      {itemTags && itemTags.length
+        ? itemsData
+            .filter(item => item.tags.some(tag => itemTags.includes(tag)))
+            .map(item => <ItemCard key={item.id} item={item} />)
+        : itemsData.map(item => (
+            // <div key={item.id} className="card-wrapper">
+            <ItemCard key={item.id} item={item} />
+            // </div>
+          ))}
+    </Masonry>
+    <FloatingActionButton>
+      <ContentAdd />
+    </FloatingActionButton>
+  </div>
+);
 
 export default ItemCardList;

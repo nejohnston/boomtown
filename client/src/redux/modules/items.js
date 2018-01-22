@@ -25,9 +25,9 @@ export const getItemsError = error => ({
 // application to your store. They are the only source of information
 // for the store. You send them to the store using store.dispatch().
 
-export const getItemTag = ({ itemTag, items }) => ({
+export const getItemTags = tag => ({
   type: GET_ITEM_TAG,
-  payload: { itemTag, items }
+  payload: tag
 });
 
 // ASYNC ACTION CREATOR
@@ -52,11 +52,13 @@ export const fetchItemsAndUsers = () => dispatch => {
     .catch(error => dispatch(getItemsError(error)));
 };
 
-export const getItemTags = ({itemsData, itemTag}) => dispatch {
-  if (itemTag.length === 0 || itemTag === [])
-  {return itemsData}
-  else ()
-}
+// export const getItemTags = tag => dispatch => {
+//   if (tag.length === 0 || this.state.itemTags === []) {
+//     return this.state.itemsData;
+//   } else {
+//     this.state.itemTags.push(tag);
+//   }
+// };
 
 // REDUCER
 
@@ -85,7 +87,8 @@ export default (
       return { ...state, isLoading: false, error: action.payload };
     }
     case GET_ITEM_TAG: {
-      return { ...state, itemTags: action.payload };
+      const itemTags = action.payload;
+      return { ...state, itemTags };
     }
     default:
       return state;
