@@ -14,13 +14,13 @@ import "../Profile/styles.css";
 
 const Profile = ({ itemsData, userId, isLoading, item }) => {
   const itemsUser = itemsData.find(item => userId === item.itemowner.id);
+  console.log(itemsData.borrower);
+  // const borrowedItems = itemsData.
   return !isLoading && itemsUser ? (
     <div className="profile">
-      <div className="profileCardWrapper">
-        <ProfileCard item={itemsUser} key={itemsData.id} />
-        {/* {itemsData &&
+      <ProfileCard item={itemsUser} key={itemsData.id} />
+      {/* {itemsData &&
           itemsData.find(item => <ProfileCard key={item.id} item={item} />)} */}
-      </div>
       <div>
         <ItemCardList itemsData={itemsData} />
       </div>

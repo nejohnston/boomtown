@@ -5,6 +5,8 @@ import MenuItem from "material-ui/MenuItem";
 
 import store from "../../redux/store";
 
+import "./styles.css";
+
 // const items = [
 //   <MenuItem key={1} value={1} primaryText="Electronics" />,
 //   <MenuItem key={2} value={2} primaryText="Household Items" />,
@@ -64,8 +66,9 @@ const Filter = ({ tags, handleChange, values }) => (
     multiple
     value={values}
     onChange={handleChange}
-    className="filter-select"
+    className="selectFieldWrapper"
     hintText="Filter by Tag"
+    autoWidth={true}
   >
     {menuItems(values)}
   </SelectField>

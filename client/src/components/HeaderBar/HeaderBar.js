@@ -27,10 +27,10 @@ const HeaderButtons = () => (
       href="/profile/k721A4pRNggCx7b6ryEE8vx1VIi1"
     />
     <RaisedButton
-      className="headerButton"
-      backgroundColor="black"
-      label="Logout"
       primary={true}
+      className="headerButton"
+      label="Logout"
+      backgroundColor={"#000"}
     />
   </div>
 );

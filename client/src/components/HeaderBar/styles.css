@@ -9,6 +9,7 @@
 .headerBar {
   flex-direction: column;
   justify-content: space-between;
+  height: 64px;
 }
 .headerBar h1 {
   display: none;
@@ -52,6 +53,7 @@
 .headerButton {
   margin-right: 1rem;
   line-height: 0;
+  background-color: #000;
 }
 
 .headerFilter {

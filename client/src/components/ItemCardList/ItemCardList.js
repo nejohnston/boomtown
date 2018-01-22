@@ -30,7 +30,7 @@ const ItemCardList = ({ itemsData, itemTags }) => (
             // </div>
           ))}
     </Masonry>
-    <FloatingActionButton>
+    <FloatingActionButton backgroundColor="#000" className="contentAddButton">
       <ContentAdd />
     </FloatingActionButton>
   </div>
