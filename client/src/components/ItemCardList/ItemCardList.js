@@ -24,11 +24,7 @@ const ItemCardList = ({ itemsData, itemTags }) => (
         ? itemsData
             .filter(item => item.tags.some(tag => itemTags.includes(tag)))
             .map(item => <ItemCard key={item.id} item={item} />)
-        : itemsData.map(item => (
-            // <div key={item.id} className="card-wrapper">
-            <ItemCard key={item.id} item={item} />
-            // </div>
-          ))}
+        : itemsData.map(item => <ItemCard key={item.id} item={item} />)}
     </Masonry>
     <FloatingActionButton backgroundColor="#000" className="contentAddButton">
       <ContentAdd />

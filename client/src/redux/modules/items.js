@@ -52,14 +52,6 @@ export const fetchItemsAndUsers = () => dispatch => {
     .catch(error => dispatch(getItemsError(error)));
 };
 
-// export const getItemTags = tag => dispatch => {
-//   if (tag.length === 0 || this.state.itemTags === []) {
-//     return this.state.itemsData;
-//   } else {
-//     this.state.itemTags.push(tag);
-//   }
-// };
-
 // REDUCER
 
 export default (

@@ -12,9 +12,8 @@ import Paper from "material-ui/Paper";
 
 import "../Profile/styles.css";
 
-const Profile = ({ itemsData, userId, isLoading, item, itemBorrower }) => {
+const Profile = ({ itemsData, userId, isLoading, item }) => {
   const itemsUser = itemsData.find(item => userId === item.itemowner.id);
-  // const borrowedItems = itemsData.
   return !isLoading && itemsUser ? (
     <div className="profile">
       <ProfileCard item={itemsUser} key={itemsData.id} />

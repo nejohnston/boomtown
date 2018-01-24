@@ -26,20 +26,18 @@ export const fetchItemsAndUsers = userid => dispatch => {
   return Promise.all(
     [
       `http://localhost:4000/items/?itemowner=${userid}`,
-      "http://localhost:4000/users/"
+      "http://localhost:4000/users/",
+      `http://localhost:4000/items/?borrower=${userid}`
     ].map(url => fetch(url).then(response => response.json()))
   )
     .then(json => {
       //   console.log(userid);
-      const [itemsData, usersList] = json;
+      const [itemsData, usersList, borrowerList] = json;
       const ProfileWithOwner = itemsData.map(item => {
         const itemowner = usersList.filter(user => user.id === item.itemowner);
         item.itemowner = itemowner[0];
-        const itemBorrower = itemsData.filter(
-          item => item.borrower === item.itemowner
-        ).length;
-        console.log(itemBorrower);
-
+        const borrowed = borrowerList.length;
+        console.log(borrowed);
         return item;
       });
       dispatch(getProfile(ProfileWithOwner));
