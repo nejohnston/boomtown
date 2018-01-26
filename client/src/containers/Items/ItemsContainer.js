@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
+import { graphql } from "react-apollo";
 
 import { fetchItemsAndUsers } from "../../redux/modules/items";
 import ItemCardList from "../../components/ItemCardList";
@@ -9,15 +10,14 @@ import ItemCardList from "../../components/ItemCardList";
 import "./styles.css";
 
 class ItemsContainer extends Component {
-  propTypes = {
+  PropTypes = {
     loading: PropTypes.bool,
     items: PropTypes.array
   };
 
   render() {
     const { loading, items } = this.props.data;
-    return;
-    <ItemCardList />;
+    return loading ? <p>Loading...</p> : <ItemCardList itemsData={items} />;
   }
 }
 
@@ -27,7 +27,7 @@ const fetchItems = gql`
       id
       title
       imageurl
-      descriptoion
+      description
       available
       tags {
         id
@@ -44,4 +44,4 @@ const fetchItems = gql`
 `;
 
 // FetchItems??
-export default graphQL(fetchItems)(ItemsContainer);
+export default graphql(fetchItems)(ItemsContainer);

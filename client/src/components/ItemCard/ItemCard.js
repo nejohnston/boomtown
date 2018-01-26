@@ -37,7 +37,10 @@ const ItemCard = ({ item, user }) => (
           avatar={<Gravatar email={item.itemowner.email} />}
         />
       </Link>
-      <CardTitle title={item.title} subtitle={item.tags.join("")} />{" "}
+      <CardTitle
+        title={item.title}
+        subtitle={item.tags.map(i => i.title).join(" ")}
+      />{" "}
       <CardText>{item.description}</CardText>
       {/* <CardActions>
         <button className="borrow-button" label="Borrow">

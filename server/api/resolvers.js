@@ -9,10 +9,10 @@ const resolveFunctions = {
   Query: {
     items() {
       // Geth me the Items!
-      return fetch(USERS_URL).then(r => r.json());
+      return fetch(ITEMS_URL).then(r => r.json());
     },
     users() {
-      return fetch(ITEMS_URL).then(r => r.json());
+      return fetch(USERS_URL).then(r => r.json());
     },
     item(root, { id }) {
       return fetch(`${ITEMS_URL}/${id}`).then(r => r.json());
