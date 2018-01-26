@@ -22,6 +22,12 @@ const resolveFunctions = {
       return fetch(`${USERS_URL}/${id}`).then(r => r.json());
     }
   },
+  //TODO: Save this new item in the db
+  Mutation: {
+    addItem(root, newItem) {
+      console.log(newItem);
+    }
+  },
   // For every item
   Item: {
     itemowner(item) {
