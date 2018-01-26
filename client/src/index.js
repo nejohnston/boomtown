@@ -29,7 +29,7 @@ import "./index.css";
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
-    <Provider store={store}>
+    <ApolloProvider store={store}>
       <Router>
         <Layout>
           <Switch>
@@ -44,7 +44,7 @@ const Boomtown = () => (
           </Switch>
         </Layout>
       </Router>
-    </Provider>
+    </ApolloProvider>
   </MuiThemeProvider>
 );
 

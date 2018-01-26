@@ -5,4 +5,4 @@ const createNetworkInterface = createNetworkInterface({
 })
 const client = new ApolloClient({networkInterface})
 
-eport default clientd
+eport default client
