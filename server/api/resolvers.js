@@ -24,9 +24,10 @@ const resolveFunctions = {
   },
   //TODO: Save this new item in the db
   // TODO: Must return Item thanks to our mutation scheme
+  // Whatever you return in your resolver is what you'll get
   Mutation: {
-    addItem(root, newItem) {
-      console.log(newItem);
+    addItem(root, { newItem: { title } }) {
+      return { title };
     }
   },
   // For every item

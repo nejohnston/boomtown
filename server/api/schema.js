@@ -24,13 +24,13 @@ const typeDefs = `
         description: String
         tags: [TagInput]
     }
+        type Mutation {
+        addItem(newItem: AddItemInput): Item}
     #/ Any mutations we want to permit on our data must be added to
     #/ the schema as the Mutation root query type:
     #/ Whenever there is an object passing through the mutation
     #/ there needs to be an input added
-    type Mutation {
-        addItem(newItem: AddItemInput): Item #/ : Item If you want item to be returned
-    }
+
     type Item {
         id: ID
         title: String
