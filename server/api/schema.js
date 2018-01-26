@@ -17,12 +17,17 @@ const typeDefs = `
     // Any mutations we want to permit on our data must be added to
     // the schema as the Mutation root query type:
     type Mutation {
-        addItem {
+        addItem (
             imageurl: String
             title: String
             description: String
             tags: [Tag]
-        }
+        ): Item // If you want item to be returned
+        updateItem (
+            id: ID
+            borrower: User
+            available: Boolean
+        ): Item
     }
     type Item {
         id: ID
