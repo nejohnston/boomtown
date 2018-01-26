@@ -14,20 +14,22 @@ const typeDefs = `
         fullname: String
         shareditems: [Item]
     }
-    // Any mutations we want to permit on our data must be added to
-    // the schema as the Mutation root query type:
+    input TagInput {
+        id: ID
+        title: String
+    }
+    input AddItemInput {
+        imageurl: String
+        title: String
+        description: String
+        tags: [TagInput]
+    }
+    #/ Any mutations we want to permit on our data must be added to
+    #/ the schema as the Mutation root query type:
+    #/ Whenever there is an object passing through the mutation
+    #/ there needs to be an input added
     type Mutation {
-        addItem (
-            imageurl: String
-            title: String
-            description: String
-            tags: [Tag]
-        ): Item // If you want item to be returned
-        updateItem (
-            id: ID
-            borrower: User
-            available: Boolean
-        ): Item
+        addItem(newItem: AddItemInput): Item #/ : Item If you want item to be returned
     }
     type Item {
         id: ID
@@ -40,7 +42,8 @@ const typeDefs = `
         available: Boolean
         borrower: User
     }
-
+    #/ Like a get request. item(id: ID) are like post requests because
+    #/ a new item might be being posted
     type Query {
         items: [Item]
         item(id: ID): Item

@@ -23,6 +23,7 @@ const resolveFunctions = {
     }
   },
   //TODO: Save this new item in the db
+  // TODO: Must return Item thanks to our mutation scheme
   Mutation: {
     addItem(root, newItem) {
       console.log(newItem);

@@ -39,17 +39,9 @@ const ItemCard = ({ item, user }) => (
       </Link>
       <CardTitle
         title={item.title}
-        subtitle={item.tags.map(i => i.title).join(" ")}
+        // subtitle={item.tags.map(i => i.title).join(" ")}
       />{" "}
       <CardText>{item.description}</CardText>
-      {/* <CardActions>
-        <button className="borrow-button" label="Borrow">
-          Borrow
-        </button>
-        <button className="borrow-button" label="rm -fr *">
-          rm -fr *
-        </button>
-      </CardActions> */}
     </Card>
   </div>
 );
