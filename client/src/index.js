@@ -13,7 +13,6 @@ import {
   Redirect
 } from "react-router-dom";
 
-import { Provider } from "react-redux";
 import store from "./redux/store";
 
 import muiTheme from "./config/theme";
@@ -31,7 +30,7 @@ import "./index.css";
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
-    <ApolloProvider store={store}>
+    <ApolloProvider client={client}>
       <Router>
         <Layout>
           <Switch>
