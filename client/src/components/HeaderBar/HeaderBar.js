@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getItemTags } from "../../redux/modules/items";
 
-import Filter from "../FilterField/FilterField";
+import Filter from "../FilterField/filterField";
 
 import AppBar from "material-ui/AppBar";
 import FontIcon from "material-ui/FontIcon";

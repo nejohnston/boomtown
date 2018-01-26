@@ -1,0 +1,212 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Miscellaneous Dishes",
+      "description":
+        "Eat off of real plates and bowls at your next dinner party. Adulting FTW.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fmisc-dishes.jpg?alt=media",
+      "tags": [
+        {
+          "id": 1,
+          "title": "Household Items"
+        }
+      ],
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "created": 1497558858,
+      "available": true,
+      "borrower": null
+    },
+    {
+      "id": 2,
+      "title": "Camp Stove",
+      "description":
+        "All you need to cook gourmet meals on your next trek into the wild.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fcamp-stove.jpg?alt=media",
+      "tags": [
+        {
+          "id": 1,
+          "title": "Household Items"
+        },
+        {
+          "id": 2,
+          "title": "Recreational Equipment"
+        }
+      ],
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "created": 1497546618,
+      "available": false,
+      "borrower": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2"
+    },
+    {
+      "id": 3,
+      "title": "Flute",
+      "description":
+        "Like-new flute to lend. C'mon, you know you want to play it...",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fflute.jpg?alt=media",
+      "tags": [
+        {
+          "id": 5,
+          "title": "Musical Instruments"
+        }
+      ],
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "created": 1497534618,
+      "available": true,
+      "borrower": null
+    },
+    {
+      "id": 4,
+      "title": "Hatchet",
+      "description":
+        "Chop things down, show nature who's boss. But be safe—alcoholic beverage not included.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fhatchet.jpg?alt=media",
+      "tags": [
+        {
+          "id": 4,
+          "title": "Tools"
+        }
+      ],
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "created": 1497504600,
+      "available": true,
+      "borrower": null
+    },
+    {
+      "id": 5,
+      "title": "Mix Tape",
+      "description":
+        "What's on it? Who knows! Borrow it and find out. Tape deck not included.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fmix-tape.jpg?alt=media",
+      "tags": [
+        {
+          "id": 6,
+          "title": "Physical Media"
+        }
+      ],
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "created": 1497489120,
+      "available": false,
+      "borrower": "dQg4HT262FYOiuOUIRj1xrXjOva2"
+    },
+    {
+      "id": 6,
+      "title": "Learn to Code Books",
+      "description":
+        "Learn HTML, CSS, JavaScript, and jQuery in 800 pages or less.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fcode-books.jpg?alt=media",
+      "tags": [
+        {
+          "id": 6,
+          "title": "Physical Media"
+        }
+      ],
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "created": 1497466800,
+      "available": true,
+      "borrower": null
+    },
+    {
+      "id": 7,
+      "title": "Keyboard",
+      "description":
+        "Teach your cat to tickle these elephant-friendly (plastic) ivories.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fkeyboard.jpg?alt=media",
+      "tags": [
+        {
+          "id": 5,
+          "title": "Musical Instruments"
+        }
+      ],
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "created": 1497433740,
+      "available": true,
+      "borrower": null
+    },
+    {
+      "id": 8,
+      "title": "Baseball",
+      "description":
+        "Lightly-used baseball for you and your friend to enjoy at your next ball tournament.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fbaseball.jpg?alt=media",
+      "tags": [
+        {
+          "id": 2,
+          "title": "Recreational Equipment"
+        },
+        {
+          "id": 7,
+          "title": "Sporting Goods"
+        }
+      ],
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "created": 1497406380,
+      "available": false,
+      "borrower": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2"
+    },
+    {
+      "id": 9,
+      "title": "Skateboard",
+      "description":
+        "Relive your youth! And try not to seriously injure yourself while doing it!",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Fskateboard.jpg?alt=media",
+      "tags": [
+        {
+          "id": 7,
+          "title": "Sporting Goods"
+        }
+      ],
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "created": 1497398220,
+      "available": false,
+      "borrower": "TyHcYnSocuOg6PmWQivgxerTLcq2"
+    },
+    {
+      "id": 10,
+      "title": "Iron and Ironing Board",
+      "description":
+        "Dress for the job you want, not the one you have, with freshly pressed shirts and slacks.",
+      "imageurl":
+        "https://firebasestorage.googleapis.com/v0/b/boomtown-dfdd8.appspot.com/o/demo-images%2Firon-and-board.jpg?alt=media",
+      "tags": [
+        {
+          "id": 1,
+          "title": "Household Items"
+        }
+      ],
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "created": 1497377580,
+      "available": true,
+      "borrower": null
+    }
+  ],
+  "users": [
+    {
+      "id": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "email": "mandi@redacademy.com",
+      "fullname": "Mandi Wise",
+      "bio": "I am a professional developer and I make stuff on the internet."
+    },
+    {
+      "id": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "email": "mackenzie@redacademy.com",
+      "fullname": "Mackenzie Kieran",
+      "bio": "I am a professional developer and I make stuff on the internet."
+    },
+    {
+      "id": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "email": "rose@redacademy.com",
+      "fullname": "Rose Cass",
+      "bio": "I am a professional developer and I make stuff on the internet."
+    }
+  ]
+}

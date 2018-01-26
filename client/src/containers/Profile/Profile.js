@@ -17,14 +17,12 @@ const Profile = ({ itemsData, userId, isLoading, item }) => {
   return !isLoading && itemsUser ? (
     <div className="profile">
       <ProfileCard item={itemsUser} key={itemsData.id} />
-      {/* {itemsData &&
-          itemsData.find(item => <ProfileCard key={item.id} item={item} />)} */}
       <div>
         <ItemCardList itemsData={itemsData} />
       </div>
     </div>
   ) : (
-    <div className="loading-wrapper">
+    <div className="loadingWrapper">
       <CircularProgress color="white" />
     </div>
   );

@@ -40,3 +40,7 @@
 .gravatarAvatar {
   border-radius: 50%;
 }
+
+.loadingWrapper {
+  margin: auto;
+}

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import CircularProgress from "material-ui/CircularProgress";
 import "./styles.css";
@@ -8,7 +8,7 @@ const Items = ({ itemsData, isLoading }) => {
   return !isLoading ? (
     <ItemCardList items={itemsData} />
   ) : (
-    <div className="loading-wrapper">
+    <div className="loadingWrapper">
       <CircularProgress color="white" />
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
 import Profile from "./Profile";
 
@@ -8,7 +7,6 @@ import "./styles.css";
 import { fetchItemsAndUsers } from "../../redux/modules/profile";
 
 class ProfileContainer extends Component {
-  static propTypes = {};
   componentDidMount() {
     this.props.dispatch(fetchItemsAndUsers(this.props.match.params.userid));
     const itemowner = this.props.itemsData.find(user => {

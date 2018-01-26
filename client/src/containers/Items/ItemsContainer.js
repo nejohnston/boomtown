@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import store from "../../redux/store";
-
-import PropTypes from "prop-types";
 
 import { fetchItemsAndUsers } from "../../redux/modules/items";
-import Items from "./Items";
 import ItemCardList from "../../components/ItemCardList";
 
 import "./styles.css";
