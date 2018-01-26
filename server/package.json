@@ -5,13 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "PORT=1337 nodemon index.js"
+    "start": "PORT=1337 index.js"
   },
-  "keywords": [
-    "graph",
-    "ql",
-    "express"
-  ],
+  "keywords": ["graph", "ql", "express"],
   "author": "nicholas",
   "license": "ISC",
   "dependencies": {

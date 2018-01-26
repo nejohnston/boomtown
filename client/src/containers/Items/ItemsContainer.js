@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import gql from "graphql-tag";
 
 import { fetchItemsAndUsers } from "../../redux/modules/items";
 import ItemCardList from "../../components/ItemCardList";
@@ -7,26 +9,39 @@ import ItemCardList from "../../components/ItemCardList";
 import "./styles.css";
 
 class ItemsContainer extends Component {
-  static propTypes = {};
-  componentDidMount() {
-    this.props.dispatch(fetchItemsAndUsers());
-  }
+  propTypes = {
+    loading: PropTypes.bool,
+    items: PropTypes.array
+  };
+
   render() {
-    // if (this.props.isLoading) return <Loader />;
-    return (
-      <ItemCardList
-        isLoading={this.props.isLoading}
-        itemsData={this.props.itemsData}
-        itemTags={this.props.itemTags}
-      />
-    );
+    const { loading, items } = this.props.data;
+    return;
+    <ItemCardList />;
   }
 }
 
-const mapStateToProps = state => ({
-  isLoading: state.items.isLoading,
-  itemsData: state.items.itemsData,
-  itemTags: state.items.itemTags,
-  error: state.items.error
-});
-export default connect(mapStateToProps)(ItemsContainer);
+const fetchItems = gql`
+  query {
+    items {
+      id
+      title
+      imageurl
+      descriptoion
+      available
+      tags {
+        id
+        title
+      }
+      borrower {
+        id
+      }
+      itemowner {
+        id
+      }
+    }
+  }
+`;
+
+// FetchItems??
+export default graphQL(fetchItems)(ItemsContainer);
