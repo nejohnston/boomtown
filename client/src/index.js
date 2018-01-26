@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import registerServiceWorker from "./registerServiceWorker";
 
-import ApolloProvider from "react-appollo";
+import { Provider } from "react-redux";
+import { ApolloProvider } from "react-apollo";
+import client from "./config/apolloClient";
 
 import {
   BrowserRouter as Router,
@@ -30,22 +32,24 @@ import "./index.css";
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
-    <ApolloProvider client={client}>
-      <Router>
-        <Layout>
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={ItemsContainer} />
-            <Route exact path="/profile/:userid" component={Profile} />
-            <Route exact path="/*" component={NotFound} />
-            {/*
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <Router>
+          <Layout>
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={ItemsContainer} />
+              <Route exact path="/profile/:userid" component={Profile} />
+              <Route exact path="/*" component={NotFound} />
+              {/*
             <Route exact path="/profile/:userid" component={Profile} />
             <Route exact path="/share" component={} />
           */}
-          </Switch>
-        </Layout>
-      </Router>
-    </ApolloProvider>
+            </Switch>
+          </Layout>
+        </Router>
+      </ApolloProvider>
+    </Provider>
   </MuiThemeProvider>
 );
 
