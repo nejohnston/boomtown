@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import registerServiceWorker from "./registerServiceWorker";
 
+import ApolloProvider from "react-appollo";
+
 import {
   BrowserRouter as Router,
   Route,

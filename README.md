@@ -19,4 +19,6 @@ npm run dev
 to open json-server
 json-server --watch db.json -p 4000
 
+npm install apollo-client-preset react-apollo graphql-tag graphql --save
+ApolloProvider
 Happy coding :)
