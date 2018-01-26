@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
@@ -6,6 +7,10 @@ const schema = require("./api/schema");
 const app = express();
 
 const GQL_PORT = process.env.PORT; // Where does this come from?
+
+// Cross-Origin Resource Sharing, this applies extra middleware to our
+// express server
+app.use("*", cors());
 
 // Where we will send all of our GraphQL requests
 app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
