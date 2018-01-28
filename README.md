@@ -49,4 +49,10 @@ title
 "userid": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
 "itemid": "3"
 }
+
+const mapStateToProps = state => ({
+isLoading: state.profile.isLoading,
+itemsData: state.profile.itemsData,
+error: state.profile.error
+});
 Happy coding :)
