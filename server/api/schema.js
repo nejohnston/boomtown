@@ -18,14 +18,23 @@ const typeDefs = `
         id: ID
         title: String
     }
+    input UpdateItem {
+        imageurl: String
+        title: String
+        description: String
+        tags: [TagInput]
+    }
     input AddItemInput {
         imageurl: String
         title: String
         description: String
         tags: [TagInput]
     }
-        type Mutation {
-        addItem(newItem: AddItemInput): Item}
+    type Mutation {
+        addItem(newItem: AddItemInput): Item
+        updateItem(graphItem: UpdateItem): Item
+        }
+
     #/ Any mutations we want to permit on our data must be added to
     #/ the schema as the Mutation root query type:
     #/ Whenever there is an object passing through the mutation

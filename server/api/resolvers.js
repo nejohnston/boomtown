@@ -25,9 +25,13 @@ const resolveFunctions = {
   //TODO: Save this new item in the db
   // TODO: Must return Item thanks to our mutation scheme
   // Whatever you return in your resolver is what you'll get
+  // null means that the variable is pointing to no object
   Mutation: {
     addItem(root, { newItem: { title } }) {
       return { title };
+    },
+    updateItem(root, { updateItem: { title } }) {
+      return { description };
     }
   },
   // For every item

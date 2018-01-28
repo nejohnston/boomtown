@@ -31,26 +31,26 @@ export const getItemTags = tag => ({
 });
 
 // ASYNC ACTION CREATOR
-export const fetchItemsAndUsers = () => dispatch => {
-  dispatch(getItemsLoading());
+// export const fetchItemsAndUsers = () => dispatch => {
+//   dispatch(getItemsLoading());
 
-  return Promise.all(
-    ["http://localhost:4000/items", "http://localhost:4000/users/"].map(url =>
-      fetch(url).then(response => response.json())
-    )
-  )
-    .then(json => {
-      const [itemsData, users] = json;
-      const itemsWithOwners = itemsData.map(item => {
-        const itemowner = users.filter(user => user.id === item.itemowner);
-        item.itemowner = itemowner[0];
-        return item;
-      });
+//   return Promise.all(
+//     ["http://localhost:4000/items", "http://localhost:4000/users/"].map(url =>
+//       fetch(url).then(response => response.json())
+//     )
+//   )
+//     .then(json => {
+//       const [itemsData, users] = json;
+//       const itemsWithOwners = itemsData.map(item => {
+//         const itemowner = users.filter(user => user.id === item.itemowner);
+//         item.itemowner = itemowner[0];
+//         return item;
+//       });
 
-      dispatch(getItems(itemsWithOwners));
-    })
-    .catch(error => dispatch(getItemsError(error)));
-};
+//       dispatch(getItems(itemsWithOwners));
+//     })
+//     .catch(error => dispatch(getItemsError(error)));
+// };
 
 // REDUCER
 
