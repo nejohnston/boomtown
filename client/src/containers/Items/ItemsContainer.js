@@ -30,7 +30,6 @@ const fetchItems = gql`
       description
       available
       tags {
-        id
         title
       }
       borrower {

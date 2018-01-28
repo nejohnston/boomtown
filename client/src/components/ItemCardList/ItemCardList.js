@@ -22,7 +22,9 @@ const ItemCardList = ({ itemsData, itemTags }) => (
     <Masonry options={masonryOptions}>
       {itemTags && itemTags.length
         ? itemsData
-            .filter(item => item.tags.some(tag => itemTags.includes(tag.title)))
+            .filter(item =>
+              item.tags.title.some(tag => itemTags.includes(tag.title))
+            )
             .map(item => <ItemCard key={item.id} item={item} />)
         : itemsData.map(item => <ItemCard key={item.id} item={item} />)}
     </Masonry>
