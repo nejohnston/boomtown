@@ -8,16 +8,11 @@ const typeDefs = `
         title: String
     }
 
-    type UserInput {
+    type User {
         id: ID
         email: String
         fullname: String
-        shareditems: [Item]
-    }
-    input User {
-        id: ID
-        email: String
-        fullname: String
+        bio: String
         shareditems: [Item]
     }
     input TagInput {

@@ -29,9 +29,6 @@ const resolveFunctions = {
   Mutation: {
     addItem(root, { newItem: { title } }) {
       return { title };
-    },
-    updateItem(root, { updateItem: { title } }) {
-      return { description };
     }
   },
   // For every item
@@ -47,23 +44,23 @@ const resolveFunctions = {
       }
     },
     async tags(item) {
-      const theItem = await fetch(`${USERS_URL}/${item.borrower}`).then(r =>
+      const theItem = await fetch(`${ITEMS_URL}/${item.borrower}`).then(r =>
         r.json()
       );
       return theItem.tags;
     }
   },
-  // User: {
-  //   async shareditems(user) {
-  //     const users = await fetch(USERS_URL).then(r => r.json());
-  //     return items.filter(item => item.ownerid === user.id);
-  //   }
-  // }
   User: {
-    fullname(user) {
-      return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
+    async shareditems(user) {
+      const users = await fetch(USERS_URL).then(r => r.json());
+      return items.filter(item => item.ownerid === user.id);
     }
   }
+  // User: {
+  //   fullname(user) {
+  //     return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
+  //   }
+  // }
 };
 
 module.exports = resolveFunctions;

@@ -20,13 +20,14 @@ const masonryOptions = {
 const ItemCardList = ({ itemsData, itemTags }) => (
   <div className="itemsWrapper">
     <Masonry options={masonryOptions}>
-      {itemTags && itemTags.length
+
+      {/* {itemTags && itemTags.length
         ? itemsData
             .filter(item =>
-              item.tags.title.some(tag => itemTags.includes(tag.title))
+              item.tags.some(tag => itemTags.includes(tag.title))
             )
             .map(item => <ItemCard key={item.id} item={item} />)
-        : itemsData.map(item => <ItemCard key={item.id} item={item} />)}
+        : itemsData.map(item => <ItemCard key={item.id} item={item} />)} */}
     </Masonry>
     <FloatingActionButton backgroundColor="#000" className="contentAddButton">
       <ContentAdd />

@@ -22,7 +22,7 @@ const fetchUsers = gql`
   query {
     users {
       id
-      title
+      fullname
       imageurl
       description
       available
