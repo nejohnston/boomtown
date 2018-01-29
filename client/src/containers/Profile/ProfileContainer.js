@@ -7,22 +7,24 @@ import "./styles.css";
 import { fetchItemsAndUsers } from "../../redux/modules/profile";
 
 class ProfileContainer extends Component {
-  // componentDidMount() {
-  //   this.props.dispatch(fetchItemsAndUsers(this.props.match.params.userid));
-  //   const itemowner = this.props.itemsData.find(user => {
-  //     user.id === this.props.itemsData;
-  //     return user;
-  //   });
-  // }
+  PropTypes = {
+    loading: PropTypes.bool,
+    items: PropTypes.array
+  };
+
   render() {
-    return (
-      <Profile
-        itemsData={this.props.itemsData}
-        userId={this.props.match.params.userid}
-        isLoading={this.props.isLoading}
-      />
-    );
+    const { loading, users } = this.props.data;
+    return loading ? <p>Loading...</p> : <Profile itemsData={items} />;
   }
 }
+// render() {
+//   return (
+//     <Profile
+//       itemsData={this.props.itemsData}
+//       userId={this.props.match.params.userid}
+//       isLoading={this.props.isLoading}
+//     />
+//   )
+// }
 
 export default graphql(fetchItems)(ProfileContainer);

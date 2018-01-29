@@ -14,6 +14,12 @@ const typeDefs = `
         fullname: String
         shareditems: [Item]
     }
+    input User {
+        id: ID
+        email: String
+        fullname: String
+        shareditems: [Item]
+    }
     input TagInput {
         id: ID
         title: String
@@ -32,6 +38,7 @@ const typeDefs = `
     }
     type Mutation {
         addItem(newItem: AddItemInput): Item
+        // getUser(newUser: )
         updateItem(graphItem: UpdateItem): Item
         }
 
