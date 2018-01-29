@@ -1,16 +1,16 @@
 const fetch = require("node-fetch");
+const loaders = require("./loaders")
 
 // In place of an actual database
 
-
 const resolveFunctions = {
   Query: {
-    items() {
+    items: (item, args, context) => {
       // Geth me the Items!
-      return fetch(ITEMS_URL).then(r => r.json());
+      return context.loaders.UserOwnedItems.load(user.id);
     },
-    users() {
-      return fetch(USERS_URL).then(r => r.json());
+    users: (user, args, context) => {
+      return context.loaders.getItems.load(args)
     },
     item(root, { id }) {
       return fetch(`${ITEMS_URL}/${id}`).then(r => r.json());

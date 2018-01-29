@@ -1,3 +1,4 @@
+var fetch = require("node-fetch")
 
 const USERS_URL = "http://localhost:4000/users";
 const ITEMS_URL = "http://localhost:4000/items";
