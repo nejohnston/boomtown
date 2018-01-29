@@ -2,8 +2,6 @@ const fetch = require("node-fetch");
 
 // In place of an actual database
 
-const USERS_URL = "http://localhost:4000/users";
-const ITEMS_URL = "http://localhost:4000/items";
 
 const resolveFunctions = {
   Query: {

@@ -1,5 +1,10 @@
 import DataLoader from 'dataloader';
-import { getUserOwnedItems } from './jsonServer';
+import { getUserOwnedItems,
+getItems,
+getUsers,
+getSingleItem,
+getBorrowedItems }
+from './jsonServer';
 
 // A batch loading function accepts an Array of keys, and returns a Promise which resolves to an Array of values. There are a few constraints that must be upheld:
 
@@ -13,12 +18,13 @@ export default function() {
       ))),
     // other data loaders go here...
     userBorrowed: new DataLoader(ids => (
-        Promise.all(ids.filter())
+        Promise.all(ids.map(id => getItems(id)))
     )),
     singleItem: new DataLoader(ids => (
+        Promise.all(ids.map(id => getSingleItem(id)))
     )),
     singleUser: new DataLoader(ids => (
-
+        Promise.all(ids.map(id => getBorrowedItems(id)))
     ))
   }
 };
