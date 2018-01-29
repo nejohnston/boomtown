@@ -8,17 +8,17 @@ const resolveFunctions = {
   Query: {
     items: (root, args, context) => {
       // Geth me the Items!
-      return context.loaders.UserOwnedItems.load(user.id);
+      return context.loaders.UserOwnedItems.load(args);
     },
     users: (root, args, context) => {
       return context.loaders.getItems.load(args)
     },
     item(root, { id }, context) {
-      return fetch(`${ITEMS_URL}/${id}`).then(r => r.json());
+      return context.loaders.singleItem.load(id)
     },
     user(root, { id }, context) {
       // Get me a User!
-      return fetch(`${USERS_URL}/${id}`).then(r => r.json());
+      return context.loaders.getUser.load(id);
     }
   },
   //TODO: Save this new item in the db
