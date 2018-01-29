@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import Profile from "./Profile";
+import CircularProgress from "material-ui/CircularProgress";
+
 
 import "./styles.css";
 import { fetchItemsAndUsers } from "../../redux/modules/profile";
@@ -15,37 +17,21 @@ class ProfileContainer extends Component {
 
   render() {
     const { loading, users } = this.props.data;
-    return loading ? <p>Loading...</p> : <Profile itemsData={users} />;
+    return !loading ? <Profile users={users} /> :
+    <div className="loadingWrapper">
+      <CircularProgress color="white" />
+    </div>;
   }
 }
 const fetchUsers = gql`
   query {
     users {
       id
+      email
       fullname
-      imageurl
-      description
-      available
-      tags {
-        title
-      }
-      borrower {
-        id
-      }
-      itemowner {
-        id
-      }
+      bio
     }
   }
 `;
-// render() {
-//   return (
-//     <Profile
-//       itemsData={this.props.itemsData}
-//       userId={this.props.match.params.userid}
-//       isLoading={this.props.isLoading}
-//     />
-//   )
-// }
 
 export default graphql(fetchUsers)(ProfileContainer);

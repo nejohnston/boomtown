@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 
-import { fetchItemsAndUsers } from "../../redux/modules/items";
+import CircularProgress from "material-ui/CircularProgress";
+
 import ItemCardList from "../../components/ItemCardList";
 
 import "./styles.css";
@@ -16,7 +17,9 @@ class ItemsContainer extends Component {
 
   render() {
     const { loading, items } = this.props.data;
-    return loading ? <p>Loading...</p> : <ItemCardList itemsData={items} />;
+    return loading ? <ItemCardList items={items} /> :     <div className="loadingWrapper">
+      <CircularProgress color="white" />
+    </div> ;
   }
 }
 

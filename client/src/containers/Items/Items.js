@@ -4,14 +4,8 @@ import CircularProgress from "material-ui/CircularProgress";
 import "./styles.css";
 import ItemCardList from "../../components/ItemCardList";
 
-const Items = ({ itemsData, isLoading }) => {
-  return !isLoading ? (
-    <ItemCardList items={itemsData} />
-  ) : (
-    <div className="loadingWrapper">
-      <CircularProgress color="white" />
-    </div>
-  );
+const Items = ({ items }) => {
+    <ItemCardList items={items} />
 };
 
 Items.propTypes = {
