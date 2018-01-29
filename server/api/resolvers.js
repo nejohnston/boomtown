@@ -53,10 +53,15 @@ const resolveFunctions = {
       return theItem.tags;
     }
   },
+  // User: {
+  //   async shareditems(user) {
+  //     const users = await fetch(USERS_URL).then(r => r.json());
+  //     return items.filter(item => item.ownerid === user.id);
+  //   }
+  // }
   User: {
-    async shareditems(user) {
-      const items = await fetch(ITEMS_URL).then(r => r.json());
-      return items.filter(item => item.ownerid === user.id);
+    fullname(user) {
+      return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
     }
   }
 };

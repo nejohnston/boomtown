@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";

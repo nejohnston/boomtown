@@ -8,7 +8,7 @@ const typeDefs = `
         title: String
     }
 
-    type User {
+    type UserInput {
         id: ID
         email: String
         fullname: String
@@ -38,7 +38,6 @@ const typeDefs = `
     }
     type Mutation {
         addItem(newItem: AddItemInput): Item
-        // getUser(newUser: )
         updateItem(graphItem: UpdateItem): Item
         }
 
