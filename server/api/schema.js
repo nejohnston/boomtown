@@ -2,7 +2,6 @@ const { makeExecutableSchema } = require("graphql-tools");
 const resolvers = require("./resolvers"); //Next step!
 
 const typeDefs = `
-
     type Tag {
         id: ID
         title: String

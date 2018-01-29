@@ -13,19 +13,19 @@ from './jsonServer';
 
 export default function() {
   return {
-    UserOwnedItems: new DataLoader(ids => (
+    userOwnedItems: new DataLoader(ids => (
       Promise.all(ids.map(id => getUserOwnedItems(id))
       ))),
     // other data loaders go here...
     userBorrowed: new DataLoader(ids => (
-        Promise.all(ids.map(id => getItems(id)))
+        Promise.all(ids.map(id => getBorrowedItems(id)))
     )),
     singleItem: new DataLoader(ids => (
         Promise.all(ids.map(id => getSingleItem(id)))
     )),
     singleUser: new DataLoader(ids => (
-        Promise.all(ids.map(id => getBorrowedItems(id)))
-    ))
+        Promise.all(ids.map(id => getSingleUser(id)))
+    )),
   }
 };
 
