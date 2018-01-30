@@ -13,7 +13,7 @@ const config = require("./config")
 
 const app = express();
 
-const gqlSchema = makeExecutableSchema({
+const schema = makeExecutableSchema({
   typeDefs,
   resolvers: initResolvers(app)
 })
@@ -25,17 +25,19 @@ config(app);
 app.use("*", cors());
 
 // Where we will send all of our GraphQL requests
-app.use("/graphql", bodyParser.json(), graphqlExpress({ gqlSchema }));
+app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 
 // A route for accessing the GraphiQL tool
 app.use(
   "/graphiql",
   graphiqlExpress({
     endpointURL: "/graphql",
-    gqlSchema,
+    schema,
     context: { loaders: createLoaders }
   })
 );
-app.listen(app.get('GQL_PORT'), () =>
-  console.log(`GraphQL is now running on http://localhost:${app.get('GQL_PORT')}/graphql`)
+app.listen(app.get('PORT'), () =>
+
+
+  console.log(`GraphQL is now running on http://localhost:${app.get('PORT')}/graphql`)
 );
