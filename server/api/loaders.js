@@ -12,7 +12,7 @@ getBorrowedItems
 // The Array of values must be the same length as the Array of keys.
 // Each index in the Array of values must correspond to the same index in the Array of keys.
 
-export default function() {
+const createLoaders {
   return {
     userOwnedItems: new DataLoader(ids => (
       Promise.all(ids.map(id => getUserOwnedItems(id))
@@ -28,7 +28,7 @@ export default function() {
         Promise.all(ids.map(id => getSingleUser(id)))
     )),
   }
-};
+});
 
 // const findBy = (field, ...values) => {
 //   console.log(`finding people with ${field} === ${values.join(', ')}`);

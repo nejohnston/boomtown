@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const loaders = require("./loaders")
 
 // In place of an actual database
-
+module.exports = app => {
 
 const resolveFunctions = {
   Query: {
@@ -60,6 +60,5 @@ const resolveFunctions = {
   //     return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
   //   }
   // }
-};
+}};
 
-module.exports = resolveFunctions;

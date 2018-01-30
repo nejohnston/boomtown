@@ -7,7 +7,8 @@ const createLoaders = require('./api/loaders');
 const config = require("./config")
 const app = express();
 
-config(app)
+config(app);
+initDB(app);
 
 const GQL_PORT = process.env.PORT; // Where does this come from?
 // First step to hooking up postgresql
@@ -30,5 +31,5 @@ app.use(
   })
 );
 app.listen(GQL_PORT, () =>
-  console.log(`GraphQL is now running on http://localhost:${GQL_PORT}/graphql`)
+  console.log(`GraphQL is now running on http://localhost:${app.get({GQL_PORT})}/graphql`)
 );

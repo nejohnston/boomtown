@@ -9,4 +9,5 @@ module.exports = (app) => {
   app.set('GQL_PORT', process.env.GQL_PORT || "1337");
   // EXPRESS CONFIG
   app.set('PORT', process.env.PORT || '3000')
+  app.set('JSON_PORT', "4000")
 }
