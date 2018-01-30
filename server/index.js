@@ -6,7 +6,12 @@ const bodyParser = require("body-parser");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const schema = require("./api/schema");
 const createLoaders = require('./api/loaders');
+
+const typeDefs = require('./api/schema')
+const initResolvers = require("./api/resolvers")
+
 const config = require("./config")
+
 const app = express();
 
 const schema = makeExecutableSchema({
@@ -15,11 +20,6 @@ const schema = makeExecutableSchema({
 })
 
 config(app);
-initDB(app);
-
-const GQL_PORT = process.env.PORT; // Where does this come from?
-// First step to hooking up postgresql
-const POSTGRESQL_PORT = process.env.POSTGRESQL_PORT
 
 // Cross-Origin Resource Sharing, this applies extra middleware to our
 // express server
