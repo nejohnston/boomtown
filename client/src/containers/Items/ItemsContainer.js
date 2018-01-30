@@ -17,9 +17,13 @@ class ItemsContainer extends Component {
 
   render() {
     const { loading, items } = this.props.data;
-    return loading ? <ItemCardList items={items} /> :     <div className="loadingWrapper">
-      <CircularProgress color="white" />
-    </div> ;
+    return loading ? (
+      <ItemCardList items={items} />
+    ) : (
+      <div className="loadingWrapper">
+        <CircularProgress color="white" />
+      </div>
+    );
   }
 }
 
