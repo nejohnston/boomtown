@@ -28,7 +28,7 @@ const createLoaders = () => {
         Promise.all(ids.map(id => getSingleUser(id)))
     )),
   }
-});
+};
 
 // const findBy = (field, ...values) => {
 //   console.log(`finding people with ${field} === ${values.join(', ')}`);

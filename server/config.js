@@ -1,4 +1,4 @@
-module.exports = (app) => {
+module.exports = app => {
     // Postgresql config
     app.set('PGUSER', process.env.PGUSER || 'boomtowndemo');
     app.set('PGPASSWORD', process.env.PGPASSWORD || 'boomtowndemo');

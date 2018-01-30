@@ -55,10 +55,5 @@ const resolveFunctions = {
       return items.filter(item => item.ownerid === user.id);
     }
   }
-  // User: {
-  //   fullname(user) {
-  //     return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
-  //   }
-  // }
 }};
 

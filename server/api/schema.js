@@ -1,7 +1,7 @@
 const { makeExecutableSchema } = require("graphql-tools");
 const resolvers = require("./resolvers"); //Next step!
 
-const typeDefs = `
+module.exports = `
     type Tag {
         id: ID
         title: String

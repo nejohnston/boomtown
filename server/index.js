@@ -1,4 +1,4 @@
-import { makeExecutableSchema } from "graphql-tools";
+const { makeExecutableSchema } = require("graphql-tools");
 
 const cors = require("cors");
 const express = require("express");
@@ -15,7 +15,7 @@ const app = express();
 
 const gqlSchema = makeExecutableSchema({
   typeDefs,
-  resolvers
+  resolvers: initResolvers(app)
 })
 
 config(app);
@@ -32,10 +32,10 @@ app.use(
   "/graphiql",
   graphiqlExpress({
     endpointURL: "/graphql",
-    schema,
-    context: { loaders: createLoaders() }
+    gqlSchema,
+    context: { loaders: createLoaders }
   })
 );
-app.listen(GQL_PORT, () =>
-  console.log(`GraphQL is now running on http://localhost:${app.get({GQL_PORT})}/graphql`)
+app.listen(app.get('GQL_PORT'), () =>
+  console.log(`GraphQL is now running on http://localhost:${app.get('GQL_PORT')}/graphql`)
 );
