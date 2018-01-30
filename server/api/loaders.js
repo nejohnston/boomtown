@@ -29,10 +29,3 @@ const createLoaders = () => {
     )),
   }
 };
-
-// const findBy = (field, ...values) => {
-//   console.log(`finding people with ${field} === ${values.join(', ')}`);
-//   return Promise.resolve(
-//     people.filter(person => values.includes(person[field]))
-//   );
-// };
