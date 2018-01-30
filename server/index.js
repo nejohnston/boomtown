@@ -38,6 +38,5 @@ app.use(
 );
 app.listen(app.get('PORT'), () =>
 
-
   console.log(`GraphQL is now running on http://localhost:${app.get('PORT')}/graphql`)
 );

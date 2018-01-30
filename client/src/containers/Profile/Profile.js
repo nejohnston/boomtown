@@ -13,7 +13,7 @@ import "../Profile/styles.css";
 
 const Profile = ({ itemsData, userId, isLoading, item, users }) => {
     <div className="profile">
-      <ProfileCard user={user} key={users.id} />
+      <ProfileCard user={users} key={users.id} />
       <div>
         <ItemCardList itemsData={itemsData} />
       </div>
