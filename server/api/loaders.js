@@ -5,7 +5,7 @@ getItems,
 getUsers,
 getSingleItem,
 getBorrowedItems
-} = require('./jsonServer');
+} = require('./resource/jsonResource');
 
 // A batch loading function accepts an Array of keys, and returns a Promise which resolves to an Array of values. There are a few constraints that must be upheld:
 
