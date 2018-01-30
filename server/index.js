@@ -15,7 +15,7 @@ const app = express();
 config(app);
 
 const jsonResource = require("./api/resources/jsonResource")(app);
-// const postgresResource = require("./api/resources/postgresResource")(app);
+const postgresResource = require("./api/resources/postgresResource")(app);
 // const firebaseResource = require("./api/resources/firebaseResource")(app);
 
 const schema = makeExecutableSchema({
