@@ -12,7 +12,7 @@ getBorrowedItems
 // The Array of values must be the same length as the Array of keys.
 // Each index in the Array of values must correspond to the same index in the Array of keys.
 
-const createLoaders {
+const createLoaders = () => {
   return {
     userOwnedItems: new DataLoader(ids => (
       Promise.all(ids.map(id => getUserOwnedItems(id))

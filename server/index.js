@@ -4,7 +4,6 @@ const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
-const schema = require("./api/schema");
 const createLoaders = require('./api/loaders');
 
 const typeDefs = require('./api/schema')
@@ -14,7 +13,7 @@ const config = require("./config")
 
 const app = express();
 
-const schema = makeExecutableSchema({
+const gqlSchema = makeExecutableSchema({
   typeDefs,
   resolvers
 })
@@ -26,7 +25,7 @@ config(app);
 app.use("*", cors());
 
 // Where we will send all of our GraphQL requests
-app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+app.use("/graphql", bodyParser.json(), graphqlExpress({ gqlSchema }));
 
 // A route for accessing the GraphiQL tool
 app.use(
