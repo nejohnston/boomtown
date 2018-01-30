@@ -1,3 +1,5 @@
+import { makeExecutableSchema } from "graphql-tools";
+
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -6,6 +8,11 @@ const schema = require("./api/schema");
 const createLoaders = require('./api/loaders');
 const config = require("./config")
 const app = express();
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
+})
 
 config(app);
 initDB(app);
