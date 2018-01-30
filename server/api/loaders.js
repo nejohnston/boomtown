@@ -1,10 +1,11 @@
-import DataLoader from 'dataloader';
-import { getUserOwnedItems,
+const DataLoader = require('dataloader');
+const {
+getUserOwnedItems,
 getItems,
 getUsers,
 getSingleItem,
-getBorrowedItems }
-from './jsonServer';
+getBorrowedItems
+} = require('./jsonServer');
 
 // A batch loading function accepts an Array of keys, and returns a Promise which resolves to an Array of values. There are a few constraints that must be upheld:
 
