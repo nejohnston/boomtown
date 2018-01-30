@@ -60,8 +60,3 @@ const typeDefs = `
         user(id: ID): User
     }
 `;
-
-module.exports = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
