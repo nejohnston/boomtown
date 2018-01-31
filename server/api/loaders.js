@@ -9,7 +9,8 @@ const DataLoader = require("dataloader");
 module.exports = ({
   postgresResource: {
     getItems,
-    getSingleItem
+    getSingleItem,
+    getTags
     // getSingleUser,
     // getUsers,
     // getBorrowedItems
@@ -20,7 +21,8 @@ module.exports = ({
 
     singleItem: new DataLoader(ids =>
       Promise.all(ids.map(id => getSingleItem(id)))
-    )
+    ),
+    getTags: new DataLoader(ids => Promise.all(ids.map(id => getTags(id))))
     // // other data loaders go here...
     // multipleUsers: new DataLoader(ids =>
     //   Promise.all(ids.map(id => getUsers(id)))

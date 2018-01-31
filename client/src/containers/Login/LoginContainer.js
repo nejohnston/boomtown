@@ -1,22 +1,36 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Login from './Login';
+import { firebaseAuth } from "../../config/firebase";
+
+import Login from "./Login";
 
 class LoginContainer extends Component {
+  static propTypes = {};
 
-    static propTypes = {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: ""
     };
+  }
 
-    login = () => {
-        console.log('You clicked the login button.');
-    }
+  login = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+  };
 
-    render() {
-        return (
-            <Login login={this.login} />
-        );
-    }
+  render() {
+    return <Login login={this.login} />;
+  }
 }
 
 export default LoginContainer;

@@ -34,8 +34,8 @@ module.exports = ({ postgresResource: { getTags } }) => ({
     //     return null;
     //   }
     // },
-    async tags(item) {
-      return await getTags(item.id);
+    tags({ id }, args, context) {
+      return context.loaders.getTags.load(id);
     }
   }
   // User: {
