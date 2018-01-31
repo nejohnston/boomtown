@@ -17,7 +17,8 @@ class ItemsContainer extends Component {
 
   render() {
     const { loading, items } = this.props.data;
-    return loading ? (
+    console.log(items);
+    return !loading ? (
       <ItemCardList items={items} />
     ) : (
       <div className="loadingWrapper">

@@ -3,7 +3,6 @@ module.exports = `
         id: ID
         title: String
     }
-
     type User {
         id: ID
         email: String

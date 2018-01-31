@@ -1,5 +1,5 @@
 const DataLoader = require("dataloader");
-const app = require("./resources/jsonResource");
+// const app = require("./resources/postgresResource");
 
 // A batch loading function accepts an Array of keys, and returns a Promise which resolves to an Array of values. There are a few constraints that must be upheld:
 
@@ -7,30 +7,29 @@ const app = require("./resources/jsonResource");
 // Each index in the Array of values must correspond to the same index in the Array of keys.
 
 module.exports = ({
-  jsonResource: {
-    getSingleItem,
+  postgresResource: {
     getItems,
-    getSingleUser,
-    getUsers,
-    getBorrowedItems
+    getSingleItem
+    // getSingleUser,
+    // getUsers,
+    // getBorrowedItems
   }
 }) => {
   return {
-    userOwnedItems: new DataLoader(ids =>
-      Promise.all(ids.map(id => getItems(id)))
-    ),
-    // other data loaders go here...
-    multipleUsers: new DataLoader(ids =>
-      Promise.all(ids.map(id => getUsers(id)))
-    ),
-    userBorrowed: new DataLoader(ids =>
-      Promise.all(ids.map(id => getBorrowedItems(id)))
-    ),
+    allItems: new DataLoader(ids => Promise.all(ids.map(id => getItems()))),
+
     singleItem: new DataLoader(ids =>
       Promise.all(ids.map(id => getSingleItem(id)))
-    ),
-    singleUser: new DataLoader(ids =>
-      Promise.all(ids.map(id => getSingleUser(id)))
     )
+    // // other data loaders go here...
+    // multipleUsers: new DataLoader(ids =>
+    //   Promise.all(ids.map(id => getUsers(id)))
+    // ),
+    // userBorrowed: new DataLoader(ids =>
+    //   Promise.all(ids.map(id => getBorrowedItems()))
+    // ),
+    // singleUser: new DataLoader(ids =>
+    //   Promise.all(ids.map(id => getSingleUser(id)))
+    // )
   };
 };

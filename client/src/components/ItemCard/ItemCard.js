@@ -24,24 +24,24 @@ import Gravatar from "react-gravatar";
 
 import "./styles.css";
 
-const ItemCard = ({ items, user }) => (
+const ItemCard = ({ item, user }) => (
   <div className="itemCardWrapper">
     <Card>
       <CardMedia>
-        <img src={items.imageurl} alt="image" />
+        <img src={item.imageurl} alt="image" />
       </CardMedia>
-      <Link to={"/profile/" + items.itemowner.id}>
-        <CardHeader
-          title={items.itemowner.fullname}
-          subtitle={moment(items.created).fromNow()}
-          avatar={<Gravatar email={items.itemowner.email} />}
-        />
-      </Link>
+      {/* <Link to={"/profile/" + item.itemowner.id}> */}
+      <CardHeader
+        // title={item.itemowner.fullname}
+        subtitle={moment(item.created).fromNow()}
+        // avatar={<Gravatar email={item.itemowner.email} />}
+      />
+      {/* </Link> */}
       <CardTitle
-        title={items.title}
-        // subtitle={item.tags.map(i => i.title).join(" ")}
+        title={item.title}
+        subtitle={item.tags.map(i => i.title).join(", ")}
       />{" "}
-      <CardText>{items.description}</CardText>
+      <CardText>{item.description}</CardText>
     </Card>
   </div>
 );

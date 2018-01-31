@@ -1,9 +1,9 @@
+const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
 
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
-const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const initLoaders = require("./api/loaders");
 
 const typeDefs = require("./api/schema");
@@ -15,34 +15,43 @@ const app = express();
 config(app);
 
 const jsonResource = require("./api/resources/jsonResource")(app);
-const postgresResource = require("./api/resources/postgresResource")(app);
+const postgresResource = require("./api/resources/postgresResource");
 // const firebaseResource = require("./api/resources/firebaseResource")(app);
 
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers: initResolvers({
-    jsonResource
-  })
-});
+postgresResource(app).then(pgResource => start(pgResource));
 
-// Cross-Origin Resource Sharing, this applies extra middleware to our
-// express server
-app.use("*", cors());
+function start(postgresResource) {
+  const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers: initResolvers({
+      postgresResource
+    })
+  });
 
-// Where we will send all of our GraphQL requests
-app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+  // Cross-Origin Resource Sharing, this applies extra middleware to our
+  // express server
+  app.use("*", cors());
 
-// A route for accessing the GraphiQL tool
-app.use(
-  "/graphiql",
-  graphiqlExpress({
-    endpointURL: "/graphql",
-    schema,
-    context: { loaders: initLoaders({ jsonResource }) }
-  })
-);
-app.listen(app.get("PORT"), () =>
-  console.log(
-    `GraphQL is now running on http://localhost:${app.get("PORT")}/graphql`
-  )
-);
+  // Where we will send all of our GraphQL requests
+  app.use(
+    "/graphql",
+    bodyParser.json(),
+    graphqlExpress({
+      schema,
+      context: { loaders: initLoaders({ postgresResource }) }
+    })
+  );
+
+  // A route for accessing the GraphiQL tool
+  app.use(
+    "/graphiql",
+    graphiqlExpress({
+      endpointURL: "/graphql"
+    })
+  );
+  app.listen(app.get("PORT"), () =>
+    console.log(
+      `GraphQL is now running on http://localhost:${app.get("PORT")}/graphql`
+    )
+  );
+}
