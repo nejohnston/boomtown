@@ -28,7 +28,6 @@ const menuItems = values => {
       primaryText={tag}
     />
   ));
-  console.log(tags);
 };
 
 const Filter = ({ tags, handleChange, values }) => (

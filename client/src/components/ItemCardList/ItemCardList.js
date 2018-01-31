@@ -10,6 +10,8 @@ import Masonry from "react-masonry-component";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import ContentAdd from "material-ui/svg-icons/content/add";
 
+import { Link } from "react-router-dom";
+
 import "./styles.css";
 
 const masonryOptions = {
@@ -28,9 +30,11 @@ const ItemCardList = ({ items, itemTags }) => (
             .map(item => <ItemCard key={item.id} item={item} />)
         : items.map(item => <ItemCard key={item.id} item={item} />)}
     </Masonry>
+    {/* <Link exact path="/share"> */}
     <FloatingActionButton backgroundColor="#000" className="contentAddButton">
       <ContentAdd />
     </FloatingActionButton>
+    {/* </Link> */}
   </div>
 );
 
