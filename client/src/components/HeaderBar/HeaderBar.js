@@ -48,12 +48,17 @@ const HeaderBar = ({ itemTags, dispatch }) => {
           <a href="/">
             <img src={Logo} alt="Boomtown" className="headerLogo" />
           </a>
-
-          <Filter
-            handleChange={(event, index, tags) => {
-              dispatch(getItemTags(tags));
-            }}
-            values={itemTags}
+          <Route
+            exact
+            path="/items"
+            render={() => (
+              <Filter
+                handleChange={(event, index, tags) => {
+                  dispatch(getItemTags(tags));
+                }}
+                values={itemTags}
+              />
+            )}
           />
         </div>
       </div>

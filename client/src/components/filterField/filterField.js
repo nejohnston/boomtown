@@ -33,22 +33,16 @@ const menuItems = values => {
 };
 
 const Filter = ({ tags, handleChange, values }) => (
-  <Route
-    exact
-    path="/items"
-    render={() => (
-      <SelectField
-        multiple
-        value={values}
-        onChange={handleChange}
-        className="selectFieldWrapper"
-        hintText="Filter by Tag"
-        autoWidth={true}
-      >
-        {menuItems(values)}
-      </SelectField>
-    )}
-  />
+  <SelectField
+    multiple
+    value={values}
+    onChange={handleChange}
+    className="selectFieldWrapper"
+    hintText="Filter by Tag"
+    autoWidth={true}
+  >
+    {menuItems(values)}
+  </SelectField>
 );
 
 export default Filter;
