@@ -14,12 +14,12 @@ import "./styles.css";
 class ItemsContainer extends Component {
   PropTypes = {
     loading: PropTypes.bool,
-    items: PropTypes.array
-    // itemTags: PropTypes.array
+    items: PropTypes.array,
+    itemTags: PropTypes.array
   };
-
   render() {
     const { loading, items } = this.props.data;
+    console.log(items);
     return !loading ? (
       <ItemCardList
         items={items}
@@ -49,6 +49,9 @@ const fetchItems = gql`
       }
       itemowner {
         id
+        fullname
+        bio
+        email
       }
     }
   }
