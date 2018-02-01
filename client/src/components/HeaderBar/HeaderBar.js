@@ -13,6 +13,9 @@ import SelectField from "material-ui/SelectField";
 import SvgIcon from "material-ui/SvgIcon";
 
 import Logo from "../../images/boomtown-logo.svg";
+import { Link, Route } from "react-router-dom";
+
+import { firebaseAuth } from "../../config/firebase";
 
 import "./styles.css";
 
@@ -29,6 +32,7 @@ const HeaderButtons = () => (
       className="headerButton"
       label="Logout"
       backgroundColor={"#000"}
+      onClick={() => firebaseAuth.signOut()}
     />
   </div>
 );

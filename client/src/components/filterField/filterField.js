@@ -5,8 +5,6 @@ import MenuItem from "material-ui/MenuItem";
 
 import store from "../../redux/store";
 
-import { Link, Route } from "react-router-dom";
-
 import "./styles.css";
 
 const tags = [
