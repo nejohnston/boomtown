@@ -25,7 +25,7 @@ const ItemCardList = ({ items, itemTags }) => (
       {itemTags && itemTags.length
         ? items
             .filter(item =>
-              items.some(tag => itemTags.includes(tag.title))
+              item.tags.some(tag => itemTags.includes(tag.id))
             )
             .map(item => <ItemCard key={item.id} item={item} />)
         : items.map(item => (
