@@ -21,9 +21,13 @@ module.exports = async app => {
     },
     getSingleItem(id) {
       return new Promise((resolve, reject) => {
-        client.query("SELECT * FROM items WHERE id = $1", [id], (err, data) => {
-          resolve(data.rows);
-        });
+        client.query(
+          "SELECT * FROM items WHERE id = $1",
+          [id],
+          (err, data) => {
+            resolve(data.rows);
+          }
+        );
       });
     },
     getTags(itemid) {
@@ -34,6 +38,17 @@ module.exports = async app => {
             ON itemtags.tagid = tags.id 
             WHERE itemtags.itemid=$1`,
           [itemid],
+          (err, data) => {
+            resolve(data.rows);
+          }
+        );
+      });
+    },
+    getSharedItems(userid) {
+      return new Promise((resolve, resolvers) => {
+        client.query(
+          "SELECT * FROM items WHERE item.itemowner = $1",
+          [userid],
           (err, data) => {
             resolve(data.rows);
           }

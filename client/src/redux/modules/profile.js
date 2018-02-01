@@ -10,11 +10,6 @@ export const getProfileLoading = () => ({
   type: GET_PROFILE_LOADING
 });
 
-export const getProfile = itemsData => ({
-  type: GET_PROFILE,
-  payload: itemsData
-});
-
 export const getProfileError = error => ({
   type: GET_PROFILE_ERROR,
   payload: error

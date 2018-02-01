@@ -10,28 +10,29 @@ module.exports = ({
   postgresResource: {
     getItems,
     getSingleItem,
-    getTags
-    // getSingleUser,
-    // getUsers,
-    // getBorrowedItems
-  }
+    getTags,
+    getSharedItems
+  },
+  firebaseResource: { getUsers, getSingleUser }
 }) => {
   return {
-    allItems: new DataLoader(ids => Promise.all(ids.map(id => getItems()))),
-
+    allItems: new DataLoader(ids =>
+      Promise.all(ids.map(id => getItems(id)))
+    ),
     singleItem: new DataLoader(ids =>
       Promise.all(ids.map(id => getSingleItem(id)))
     ),
-    getTags: new DataLoader(ids => Promise.all(ids.map(id => getTags(id))))
-    // // other data loaders go here...
-    // multipleUsers: new DataLoader(ids =>
-    //   Promise.all(ids.map(id => getUsers(id)))
-    // ),
-    // userBorrowed: new DataLoader(ids =>
-    //   Promise.all(ids.map(id => getBorrowedItems()))
-    // ),
-    // singleUser: new DataLoader(ids =>
-    //   Promise.all(ids.map(id => getSingleUser(id)))
-    // )
+    userSharedItems: new DataLoader(ids =>
+      Promise.all(ids.map(id => getSharedItems(id)))
+    ),
+    itemTags: new DataLoader(ids =>
+      Promise.all(ids.map(id => getTags(id)))
+    ),
+    allUsers: new DataLoader(ids =>
+      Promise.all(ids.map(id => getUsers(id)))
+    ),
+    singleUser: new DataLoader(ids =>
+      Promise.all(ids.map(id => getSingleUser(id)))
+    )
   };
 };

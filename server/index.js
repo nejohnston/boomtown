@@ -1,4 +1,7 @@
-const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
+const {
+  graphqlExpress,
+  graphiqlExpress
+} = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
 
 const cors = require("cors");
@@ -14,9 +17,10 @@ const config = require("./config");
 const app = express();
 config(app);
 
-const jsonResource = require("./api/resources/jsonResource")(app);
+const firebaseResource = require("./api/resources/firebaseResource")(
+  app
+);
 const postgresResource = require("./api/resources/postgresResource");
-// const firebaseResource = require("./api/resources/firebaseResource")(app);
 
 postgresResource(app).then(pgResource => start(pgResource));
 
@@ -24,7 +28,8 @@ function start(postgresResource) {
   const schema = makeExecutableSchema({
     typeDefs,
     resolvers: initResolvers({
-      postgresResource
+      postgresResource,
+      firebaseResource
     })
   });
 
@@ -38,7 +43,12 @@ function start(postgresResource) {
     bodyParser.json(),
     graphqlExpress({
       schema,
-      context: { loaders: initLoaders({ postgresResource }) }
+      context: {
+        loaders: initLoaders({
+          postgresResource,
+          firebaseResource
+        })
+      }
     })
   );
 
@@ -51,7 +61,9 @@ function start(postgresResource) {
   );
   app.listen(app.get("PORT"), () =>
     console.log(
-      `GraphQL is now running on http://localhost:${app.get("PORT")}/graphql`
+      `GraphQL is now running on http://localhost:${app.get(
+        "PORT"
+      )}/graphql`
     )
   );
 }

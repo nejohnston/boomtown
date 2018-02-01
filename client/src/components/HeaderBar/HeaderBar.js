@@ -13,7 +13,7 @@ import SelectField from "material-ui/SelectField";
 import SvgIcon from "material-ui/SvgIcon";
 
 import Logo from "../../images/boomtown-logo.svg";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, withRouter } from "react-router-dom";
 
 import { firebaseAuth } from "../../config/firebase";
 
@@ -25,7 +25,7 @@ const HeaderButtons = () => (
       className="headerButton"
       label="My Profile"
       primary={true}
-      href="/profile/k721A4pRNggCx7b6ryEE8vx1VIi1"
+      onClick={() => firebaseAuth.currentUser.uid}
     />
     <RaisedButton
       primary={true}
@@ -75,4 +75,4 @@ const mapStateToProps = state => ({
   itemTags: state.items.itemTags
 });
 
-export default connect(mapStateToProps)(HeaderBar);
+export default withRouter(connect(mapStateToProps)(HeaderBar));

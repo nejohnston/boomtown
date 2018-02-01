@@ -1,12 +1,12 @@
 const loaders = require("./loaders");
 
-module.exports = ({ postgresResource: { getTags } }) => ({
+module.exports = () => ({
   Query: {
     items: (root, args, context) => {
       return context.loaders.allItems.load(args);
     },
     users: (root, args, context) => {
-      return context.loaders.multipleUsers.load(args);
+      return context.loaders.allUsers.load(args);
     },
     item: (root, { id }, context) => {
       return context.loaders.singleItem.load(id);
@@ -24,23 +24,23 @@ module.exports = ({ postgresResource: { getTags } }) => ({
   },
   // For every item
   Item: {
-    // itemowner(item) {
-    //   return getUser(item.itemowner);
-    // },
+    itemowner({ itemowner }, args, context) {
+      return context.loaders.singleUser.load(itemowner);
+    },
     // borrower(item) {
     //   if (item.borrower) {
-    //     return getUser(item.borrower);
+    //     return singleUser(item.borrower);
     //   } else {
     //     return null;
     //   }
     // },
     tags({ id }, args, context) {
-      return context.loaders.getTags.load(id);
+      return context.loaders.itemTags.load(id);
+    }
+  },
+  User: {
+    shareditems(user) {
+      return userSharedItems(user.id);
     }
   }
-  // User: {
-  //   shareditems(user) {
-  //     return getSharedItems(user.id);
-  //   }
-  // }
 });
