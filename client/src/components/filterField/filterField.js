@@ -5,6 +5,8 @@ import MenuItem from "material-ui/MenuItem";
 
 import store from "../../redux/store";
 
+import { Link, Route } from "react-router-dom";
+
 import "./styles.css";
 
 const tags = [
@@ -31,16 +33,22 @@ const menuItems = values => {
 };
 
 const Filter = ({ tags, handleChange, values }) => (
-  <SelectField
-    multiple
-    value={values}
-    onChange={handleChange}
-    className="selectFieldWrapper"
-    hintText="Filter by Tag"
-    autoWidth={true}
-  >
-    {menuItems(values)}
-  </SelectField>
+  <Route
+    exact
+    path="/items"
+    render={() => (
+      <SelectField
+        multiple
+        value={values}
+        onChange={handleChange}
+        className="selectFieldWrapper"
+        hintText="Filter by Tag"
+        autoWidth={true}
+      >
+        {menuItems(values)}
+      </SelectField>
+    )}
+  />
 );
 
 export default Filter;

@@ -11,7 +11,14 @@ import logo from "../../images/boomtown-logo.svg";
 import bottomLeft from "../../images/home-bl.svg";
 import topRight from "../../images/home-tr.svg";
 
-const Login = ({ login }) => (
+const Login = ({
+  login,
+  loginError,
+  handleUpdateEmail,
+  handleUpdatePassword,
+  emailInputValue,
+  passwordInputValue
+}) => (
   <div className="page login">
     <div className="logo">
       <img src={logo} alt="Boomtown Logo" />
@@ -33,10 +40,18 @@ const Login = ({ login }) => (
             autoComplete="off"
           >
             <div>
-              <ValidatedTextField label="Email" />
+              <ValidatedTextField
+                value={emailInputValue}
+                handleChange={handleUpdateEmail}
+                label="Email"
+              />
             </div>
             <div>
-              <ValidatedTextField label="Password" />
+              <ValidatedTextField
+                value={passwordInputValue}
+                handleChange={handleUpdatePassword}
+                label="Password"
+              />
             </div>
             <RaisedButton
               className="enterButton"
@@ -47,6 +62,7 @@ const Login = ({ login }) => (
               Enter
             </RaisedButton>
           </form>
+          <div>{loginError.message}</div>
         </div>
       </Paper>
     </div>

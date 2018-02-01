@@ -19,6 +19,8 @@ import store from "./redux/store";
 
 import muiTheme from "./config/theme";
 
+import PrivateRoute from "./components/PrivateRoute";
+
 import Layout from "./components/Layout";
 import Login from "./containers/Login";
 import Items from "./containers/Items";
@@ -30,6 +32,28 @@ import ShareContainer from "./containers/Share";
 import NotFound from "./containers/NotFound";
 
 import "./index.css";
+import { updateAuthState, userLoading } from "./redux/modules/auth";
+import { firebaseAuth } from "./config/firebase";
+import LoginContainer from "./containers/Login/LoginContainer";
+
+// local variable gotProfile's purpose is so the subscribe
+// method is only run once.
+let gotProfile = false;
+store.subscribe(() => {
+  const values = store.getState();
+  if (values.authenticated !== "LOADING_PROFILE" && !gotProfile) {
+    gotProfile = true;
+    store.dispatch(userLoading(false));
+  }
+});
+
+firebaseAuth.onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch(updateAuthState(user));
+  } else {
+    store.dispatch(updateAuthState(false));
+  }
+});
 
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
@@ -38,8 +62,8 @@ const Boomtown = () => (
         <Router>
           <Layout>
             <Switch>
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/" component={ItemsContainer} />
+              <Route exact path="/" component={LoginContainer} />
+              <PrivateRoute exact path="/items" component={ItemsContainer} />
               <Route exact path="/profile/:userid" component={Profile} />
               <Route exact path="/*" component={NotFound} />
               <Route exact path="/share" component={ShareContainer} />

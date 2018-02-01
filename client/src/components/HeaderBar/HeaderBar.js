@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getItemTags } from "../../redux/modules/items";
 
-import Filter from "../FilterField/filterField";
+import Filter from "../FilterField/FilterField";
 
 import AppBar from "material-ui/AppBar";
 import FontIcon from "material-ui/FontIcon";
@@ -13,8 +13,6 @@ import SelectField from "material-ui/SelectField";
 import SvgIcon from "material-ui/SvgIcon";
 
 import Logo from "../../images/boomtown-logo.svg";
-
-import { Link, Route } from "react-router-dom";
 
 import "./styles.css";
 
@@ -35,7 +33,7 @@ const HeaderButtons = () => (
   </div>
 );
 
-const HeaderBar = ({ isLoading, itemTags, dispatch }) => {
+const HeaderBar = ({ itemTags, dispatch }) => {
   return (
     <AppBar
       showMenuIconButton={false}
@@ -50,18 +48,12 @@ const HeaderBar = ({ isLoading, itemTags, dispatch }) => {
           <a href="/">
             <img src={Logo} alt="Boomtown" className="headerLogo" />
           </a>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Filter
-                handleChange={(event, index, tags) => {
-                  dispatch(getItemTags(tags));
-                }}
-                isLoading={isLoading}
-                values={itemTags}
-              />
-            )}
+
+          <Filter
+            handleChange={(event, index, tags) => {
+              dispatch(getItemTags(tags));
+            }}
+            values={itemTags}
           />
         </div>
       </div>
@@ -71,7 +63,6 @@ const HeaderBar = ({ isLoading, itemTags, dispatch }) => {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.items.isLoading,
   itemTags: state.items.itemTags
 });
 
