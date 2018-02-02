@@ -1,6 +1,6 @@
 const loaders = require("./loaders");
 
-module.exports = () => ({
+module.exports = ({ postgresResource: { createItem } }) => ({
   Query: {
     items: (root, args, context) => {
       return context.loaders.allItems.load(args);
@@ -18,8 +18,8 @@ module.exports = () => ({
   // Whatever you return in your resolver is what you'll get
   // null means that the variable is pointing to no object
   Mutation: {
-    addItem(root, { newItem: { title } }) {
-      return { title };
+    createNewItem(root, { newItem }) {
+      return createItem(newItem);
     }
   },
   // For every item
@@ -27,13 +27,13 @@ module.exports = () => ({
     itemowner({ itemowner }, args, context) {
       return context.loaders.singleUser.load(itemowner);
     },
-    // borrower(item) {
-    //   if (item.borrower) {
-    //     return singleUser(item.borrower);
-    //   } else {
-    //     return null;
-    //   }
-    // },
+    borrower(item) {
+      if (item.borrower) {
+        return singleUser(item.borrower);
+      } else {
+        return null;
+      }
+    },
     tags({ id }, args, context) {
       return context.loaders.itemTags.load(id);
     }

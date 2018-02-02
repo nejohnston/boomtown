@@ -28,11 +28,14 @@ import ItemsContainer from "./containers/Items";
 import Profile from "./containers/Profile";
 import ProfileContainer from "./containers/Profile";
 import ItemCardList from "./components/ItemCardList";
-import ShareContainer from "./containers/Share";
+import ShareStepper from "./containers/Share";
 import NotFound from "./containers/NotFound";
 
 import "./index.css";
-import { updateAuthState, userLoading } from "./redux/modules/auth";
+import {
+  updateAuthState,
+  userLoading
+} from "./redux/modules/auth";
 import { firebaseAuth } from "./config/firebase";
 import LoginContainer from "./containers/Login/LoginContainer";
 
@@ -41,7 +44,10 @@ import LoginContainer from "./containers/Login/LoginContainer";
 let gotProfile = false;
 store.subscribe(() => {
   const values = store.getState();
-  if (values.authenticated !== "LOADING_PROFILE" && !gotProfile) {
+  if (
+    values.authenticated !== "LOADING_PROFILE" &&
+    !gotProfile
+  ) {
     gotProfile = true;
     store.dispatch(userLoading(false));
   }
@@ -63,10 +69,22 @@ const Boomtown = () => (
           <Layout>
             <Switch>
               <Route exact path="/" component={LoginContainer} />
-              <PrivateRoute exact path="/items" component={ItemsContainer} />
-              <Route exact path="/profile/:userid" component={Profile} />
+              <PrivateRoute
+                exact
+                path="/items"
+                component={ItemsContainer}
+              />
+              <Route
+                exact
+                path="/profile/:userid"
+                component={Profile}
+              />
               <Route exact path="/*" component={NotFound} />
-              <Route exact path="/share" component={ShareContainer} />
+              <Route
+                exact
+                path="/share"
+                component={ShareStepper}
+              />
             </Switch>
           </Layout>
         </Router>

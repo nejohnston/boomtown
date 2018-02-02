@@ -12,7 +12,6 @@ module.exports = `
     }
     input TagInput {
         id: ID
-        title: String
     }
     input UpdateItem {
         imageurl: String
@@ -21,13 +20,14 @@ module.exports = `
         tags: [TagInput]
     }
     input AddItemInput {
+        itemowner: ID
         imageurl: String
         title: String
         description: String
         tags: [TagInput]
     }
     type Mutation {
-        addItem(newItem: AddItemInput): Item
+        createNewItem(newItem: AddItemInput): Item
         updateItem(graphItem: UpdateItem): Item
         }
 
