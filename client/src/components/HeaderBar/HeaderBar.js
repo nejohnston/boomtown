@@ -28,7 +28,7 @@ const HeaderButtons = () => (
       onClick={() => firebaseAuth.currentUser.uid}
     />
     <RaisedButton
-      primary={true}
+      secondary={true}
       className="headerButton"
       label="Logout"
       backgroundColor={"#000"}
@@ -50,7 +50,11 @@ const HeaderBar = ({ itemTags, dispatch }) => {
       <div>
         <div className="titleWrapper">
           <a href="/">
-            <img src={Logo} alt="Boomtown" className="headerLogo" />
+            <img
+              src={Logo}
+              alt="Boomtown"
+              className="headerLogo"
+            />
           </a>
           <Route
             exact

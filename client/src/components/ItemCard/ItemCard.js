@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import {
   Card,
@@ -9,20 +9,24 @@ import {
   CardTitle,
   CardText
 } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 
-import {
-  Link,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import moment from "moment";
 import Gravatar from "react-gravatar";
 
 import "./styles.css";
+import { toggleItemBeingBorrowed } from "../../redux/modules/borrowed";
+
+const BorrowedButton = dispatch => {
+  <RaisedButton
+    secondary={true}
+    className="headerButton"
+    label="Borrow"
+    onChange={() => dispatch(toggleItemBeingBorrowed)}
+  />;
+};
 
 const ItemCard = ({ item, user }) => (
   <div className="itemCardWrapper">
@@ -42,11 +46,12 @@ const ItemCard = ({ item, user }) => (
         subtitle={item.tags.map(i => i.title).join(", ")}
       />{" "}
       <CardText>{item.description}</CardText>
+      <CardActions />
     </Card>
   </div>
 );
-// ItemCard.propTypes = {
-//   item: propTypes.array.isRequired
+// ItemCard.PropTypes = {
+//   item: PropTypes.array.isRequired
 // };
 
-export default ItemCard;
+export default connect(mapStateToProps)(ItemCard);
