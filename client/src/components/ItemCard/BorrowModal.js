@@ -1,17 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
-import RaisedButton from "material-ui/RaisedButton";
-
-/**
- * A modal dialog can only be closed by selecting one of the actions.
- */
-const BorrowModal = () => (
-  <div>
-    <Dialog title="Dialog With Actions" open modal={true}>
-      Only actions can close this dialog.
-    </Dialog>
-  </div>
+import { connect } from "react-redux";
+import { updateModalState } from "../../redux/modules/borrowed";
+const BorrowModal = ({ close, modalOpen }) => (
+  <Dialog
+    title="Borrow Item"
+    actions={[
+      <FlatButton
+        label="Cancel"
+        primary
+        onClick={close(false)}
+      />,
+      <FlatButton
+        label="Submit"
+        primary
+        keyboardFocused
+        onClick={close(false)}
+      />
+    ]}
+    modal={false}
+    open={modalOpen}
+    onRequestClose={close(false)}
+  >
+    The actions in this window were passed in as an array of
+    React objects.
+  </Dialog>
 );
-
-export default BorrowModal;
+const mapStateToProps = state => ({
+  modalOpen: state.borrowed.modalOpen
+});
+const mapDispatchToProps = dispatch => ({
+  close(modalOpen) {
+    return () => {
+      dispatch(updateModalState(modalOpen));
+    };
+  }
+});
+export default connect(mapStateToProps, mapDispatchToProps)(
+  BorrowModal
+);
