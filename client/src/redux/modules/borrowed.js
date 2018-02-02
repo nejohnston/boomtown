@@ -14,7 +14,7 @@ export const updateModalState = modalOpen => ({
 export default function(
   state = {
     // dialoging: "BORROWED_ITEM_INFO"
-    modalOpen: "TOGGLED_ITEM"
+    modalOpen: false
   },
   action
 ) {

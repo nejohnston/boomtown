@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import BorrowModal from "./BorrowModal";
+
 import {
   Card,
   CardActions,
@@ -21,20 +23,13 @@ import Gravatar from "react-gravatar";
 import "./styles.css";
 import { updateModalState } from "../../redux/modules/borrowed";
 
-const BorrowedButton = dispatch => {
-  <RaisedButton
-    secondary={true}
-    className="headerButton"
-    label="Borrow"
-    handleChange={(event, index, open) =>
-      dispatch(updateModalState(open))
-    }
-  />;
-  // handleChange={(event, index, tags) => {
-  //                 dispatch(getItemTags(tags));
-};
+// const BorrowedButton = dispatch => {
+//   return (
 
-const ItemCard = ({ item, user }) => (
+//   );
+// };
+
+const ItemCard = ({ item, user, dispatch }) => (
   <div className="itemCardWrapper">
     <Card>
       <CardMedia>
@@ -52,15 +47,22 @@ const ItemCard = ({ item, user }) => (
         subtitle={item.tags.map(i => i.title).join(", ")}
       />{" "}
       <CardText>{item.description}</CardText>
-      <CardActions />
+      <CardActions>
+        <RaisedButton
+          secondary={true}
+          className="headerButton"
+          label="Borrow"
+          onClick={() => dispatch(updateModalState(true))}
+        />
+      </CardActions>
     </Card>
   </div>
 );
-// ItemCard.PropTypes = {
-//   item: PropTypes.array.isRequired
-// };
-const mapStateToProps = state => ({
-  updateModalState: state.borrowed.modalOpen
+
+const mapDispatchToProps = dispatch => ({
+  updateModalState: modalOpen => {
+    dispatch(updateModalState(modalOpen));
+  }
 });
 
-export default connect(mapStateToProps)(ItemCard);
+export default connect(mapDispatchToProps)(ItemCard);

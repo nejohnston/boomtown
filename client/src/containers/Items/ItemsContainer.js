@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
-import { graphql } from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import { connect } from "react-redux";
 import store from "../../redux/store";
 
 import CircularProgress from "material-ui/CircularProgress";
 
 import ItemCardList from "../../components/ItemCardList";
+import BorrowModal from "../../components/ItemCard/BorrowModal";
+// import updateModalState from "../../redux/modules/";
 
 import "./styles.css";
+import { updateModalState } from "../../redux/modules/borrowed";
 
 class ItemsContainer extends Component {
   PropTypes = {
@@ -19,15 +22,17 @@ class ItemsContainer extends Component {
   };
   render() {
     const { loading, items } = this.props.data;
-    console.log(items);
-    return !loading ? (
-      <ItemCardList
-        items={items}
-        itemTags={this.props.itemTags}
-      />
-    ) : (
+    return loading ? (
       <div className="loadingWrapper">
         <CircularProgress color="white" />
+      </div>
+    ) : (
+      <div className="itemsWrapper">
+        {this.props.modalOpen && <BorrowModal />}
+        <ItemCardList
+          items={items}
+          itemTags={this.props.itemTags}
+        />
       </div>
     );
   }
@@ -58,9 +63,11 @@ const fetchItems = gql`
 `;
 
 const mapStateToProps = state => ({
-  itemTags: state.items.itemTags
+  itemTags: state.items.itemTags,
+  modalOpen: state.borrowed.modalOpen
 });
 // FetchItems??
-export default graphql(fetchItems)(
-  connect(mapStateToProps)(ItemsContainer)
-);
+export default compose(
+  graphql(fetchItems),
+  connect(mapStateToProps)
+)(ItemsContainer);
