@@ -32,14 +32,14 @@ const ItemCardList = ({ items, itemTags }) => (
             <ItemCard key={item.id} item={item} />
           ))}
     </Masonry>
-    {/* <Link exact path="/share"> */}
-    <FloatingActionButton
-      backgroundColor="#000"
-      className="contentAddButton"
-    >
-      <ContentAdd />
-    </FloatingActionButton>
-    {/* </Link> */}
+    <Link to="/share">
+      <FloatingActionButton
+        backgroundColor="#000"
+        className="contentAddButton"
+      >
+        <ContentAdd />
+      </FloatingActionButton>
+    </Link>
   </div>
 );
 

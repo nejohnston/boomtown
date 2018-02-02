@@ -1,7 +1,7 @@
 const { Client } = require("pg");
 
-const tq = tagIds =>
-  tagIds.map((id, i) => `($1, $${1 + 2})`).join(", ");
+const tq = tags =>
+  tags.map((id, i) => `($1, $${i + 2})`).join(", ");
 
 module.exports = async app => {
   const client = new Client({
@@ -65,15 +65,14 @@ module.exports = async app => {
       itemowner,
       tags
     }) {
-      const values = [
+      const itemValues = [
         title,
         description,
         imageurl,
-        itemowner,
-        tags
+        itemowner
       ];
-      const itemInsertQuery = `INSERT INTO items(title, description, imageurl, itemowner) 
-                    VALUES($1, $2, $3, $4) RETURNING *`;
+      tags = tags.map(tag => tag.id);
+      const itemInsertQuery = `INSERT INTO items(title, description, imageurl, itemowner) VALUES($1, $2, $3, $4) RETURNING *`;
       try {
         await client.query("BEGIN");
         const itemResult = await client.query(
@@ -82,14 +81,15 @@ module.exports = async app => {
         );
 
         const tagsInsertQuery = `INSERT INTO itemtags(itemid, tagid) VALUES ${tq(
-          tagIds
+          tags
         )}`;
-        const tagsResult = await client.query(tagsInsertQuery, [
-          itemResult.row[0].id,
-          ...tagIds
+
+        await client.query(tagsInsertQuery, [
+          itemResult.rows[0].id,
+          ...tags
         ]);
         await client.query("COMMIT");
-        return itemResult;
+        return itemResult.rows[0];
       } catch (e) {
         await client.query("ROLLBACK");
         throw e;

@@ -28,8 +28,8 @@ import ItemsContainer from "./containers/Items";
 import Profile from "./containers/Profile";
 import ProfileContainer from "./containers/Profile";
 import ItemCardList from "./components/ItemCardList";
-import ShareStepper from "./containers/Share";
-import NotFound from "./containers/NotFound";
+import ShareContainer from "./containers/Share";
+import NotFoundContainer from "./containers/NotFound";
 
 import "./index.css";
 import {
@@ -74,16 +74,20 @@ const Boomtown = () => (
                 path="/items"
                 component={ItemsContainer}
               />
-              <Route
+              <PrivateRoute
                 exact
                 path="/profile/:userid"
                 component={Profile}
               />
-              <Route exact path="/*" component={NotFound} />
-              <Route
+              <PrivateRoute
                 exact
                 path="/share"
-                component={ShareStepper}
+                component={ShareContainer}
+              />
+              <PrivateRoute
+                exact
+                path="*"
+                component={NotFoundContainer}
               />
             </Switch>
           </Layout>

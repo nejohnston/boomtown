@@ -23,12 +23,6 @@ import Gravatar from "react-gravatar";
 import "./styles.css";
 import { updateModalState } from "../../redux/modules/borrowed";
 
-// const BorrowedButton = dispatch => {
-//   return (
-
-//   );
-// };
-
 const ItemCard = ({ item, user, dispatch }) => (
   <div className="itemCardWrapper">
     <Card>

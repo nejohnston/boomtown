@@ -14,6 +14,7 @@ module.exports = `
         id: ID
     }
     input UpdateItem {
+        itemowner: ID
         imageurl: String
         title: String
         description: String
