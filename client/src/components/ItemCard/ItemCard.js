@@ -13,19 +13,25 @@ import RaisedButton from "material-ui/RaisedButton";
 
 import { Link } from "react-router-dom";
 
+import { connect } from "react-redux";
+
 import moment from "moment";
 import Gravatar from "react-gravatar";
 
 import "./styles.css";
-import { toggleItemBeingBorrowed } from "../../redux/modules/borrowed";
+import { updateModalState } from "../../redux/modules/borrowed";
 
 const BorrowedButton = dispatch => {
   <RaisedButton
     secondary={true}
     className="headerButton"
     label="Borrow"
-    onChange={() => dispatch(toggleItemBeingBorrowed)}
+    handleChange={(event, index, open) =>
+      dispatch(updateModalState(open))
+    }
   />;
+  // handleChange={(event, index, tags) => {
+  //                 dispatch(getItemTags(tags));
 };
 
 const ItemCard = ({ item, user }) => (
@@ -53,5 +59,8 @@ const ItemCard = ({ item, user }) => (
 // ItemCard.PropTypes = {
 //   item: PropTypes.array.isRequired
 // };
+const mapStateToProps = state => ({
+  updateModalState: state.borrowed.modalOpen
+});
 
 export default connect(mapStateToProps)(ItemCard);
