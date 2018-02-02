@@ -18,7 +18,8 @@ class ItemsContainer extends Component {
   PropTypes = {
     loading: PropTypes.bool,
     items: PropTypes.array,
-    itemTags: PropTypes.array
+    itemTags: PropTypes.array,
+    modalOpen: PropTypes.bool
   };
   render() {
     const { loading, items } = this.props.data;
