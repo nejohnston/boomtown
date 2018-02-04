@@ -14,6 +14,30 @@ const fetchUsers = gql`
       bio
       email
       fullname
+      borroweditems {
+        id
+      }
+      shareditems {
+        id
+        title
+        imageurl
+        description
+        available
+        created
+        tags {
+          title
+        }
+        borrower {
+          id
+          fullname
+        }
+        itemowner {
+          id
+          bio
+          email
+          fullname
+        }
+      }
     }
   }
 `;
@@ -25,7 +49,7 @@ class ProfileContainer extends Component {
   };
   render() {
     const { loading, user } = this.props.data;
-    console.log(this.props.data);
+    console.log(user);
     return !loading ? (
       <Profile user={user} />
     ) : (
