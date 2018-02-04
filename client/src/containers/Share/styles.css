@@ -1,0 +1,18 @@
+.shareContainer {
+  margin: auto;
+  display: flex;
+}
+.shareInnerWrapper {
+  display: flex;
+  flex-direction: row;
+  /* flex: 0 1 50%; */
+  align-items: center;
+  justify-content: center;
+}
+.shareCardWrapper {
+  max-width: 300px;
+}
+
+.shareStepperWrapper {
+  max-width: 50%;
+}

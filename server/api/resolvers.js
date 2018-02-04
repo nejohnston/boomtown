@@ -1,6 +1,12 @@
 const loaders = require("./loaders");
 
-module.exports = ({ postgresResource: { createItem } }) => ({
+module.exports = ({
+  postgresResource: {
+    createItem,
+    getSharedItems,
+    getBorrowedItems
+  }
+}) => ({
   Query: {
     items: (root, args, context) => {
       return context.loaders.allItems.load(args);
@@ -39,8 +45,11 @@ module.exports = ({ postgresResource: { createItem } }) => ({
     }
   },
   User: {
+    borroweditems(user) {
+      return getBorrowedItems(user.id);
+    },
     shareditems(user) {
-      return userSharedItems(user.id);
+      return getSharedItems(user.id);
     }
   }
 });

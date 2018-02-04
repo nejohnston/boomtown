@@ -12,17 +12,17 @@ import {
 
 import RaisedButton from "material-ui/RaisedButton";
 
-import placholderImage from "../../images/item-placeholder.jpg";
+import placeholderImage from "../../images/item-placeholder.jpg";
 
 import Gravatar from "react-gravatar";
 
 import "./styles.css";
 
 const ShareCard = ({ item, user }) => (
-  <div className="itemCardWrapper">
+  <div className="shareCardWrapper">
     <Card>
       <CardMedia>
-        {/* <img src={item.imageurl} alt="image" /> */}
+        <img src={placeholderImage} alt="placeholder image" />
       </CardMedia>
       <CardHeader
       //   title={item.itemowner.fullname}

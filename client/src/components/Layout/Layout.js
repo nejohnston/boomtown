@@ -22,9 +22,13 @@ const Layout = ({ children, authenticated, userLoading }) =>
     <Loader />
   ) : (
     <div className="appContentWrapper">
-      <div className="appHeader">{authenticated && <HeaderBar />}</div>
+      <div className="appHeader">
+        {authenticated && <HeaderBar />}
+      </div>
       <div className="appContent">{children}</div>
-      {/* And a footer here, but not on the login route... */}
+      <footer className="appFooter">
+        <p>© 2017 Boomtown Corp. All Rights Reserved</p>
+      </footer>
     </div>
   );
 

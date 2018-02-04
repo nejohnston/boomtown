@@ -77,7 +77,7 @@ const Boomtown = () => (
               <PrivateRoute
                 exact
                 path="/profile/:userid"
-                component={Profile}
+                component={ProfileContainer}
               />
               <PrivateRoute
                 exact

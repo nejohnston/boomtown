@@ -22,9 +22,9 @@ module.exports = ({
     singleItem: new DataLoader(ids =>
       Promise.all(ids.map(id => getSingleItem(id)))
     ),
-    userSharedItems: new DataLoader(ids =>
-      Promise.all(ids.map(id => getSharedItems(id)))
-    ),
+    // userSharedItems: new DataLoader(ids =>
+    //   Promise.all(ids.map(id => getSharedItems(id)))
+    // ),
     itemTags: new DataLoader(ids =>
       Promise.all(ids.map(id => getTags(id)))
     ),

@@ -11,3 +11,11 @@
   width: 100%;
   flex: 1;
 }
+
+.appFooter {
+  text-align: center;
+}
+.appFooter p {
+  margin-left: auto;
+  margin-right: auto;
+}

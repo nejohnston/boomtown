@@ -11,13 +11,15 @@ import Paper from "material-ui/Paper";
 
 import "../Profile/styles.css";
 
-const Profile = ({ itemsData, userId, isLoading, item, users }) => {
+const Profile = ({ item, user }) => {
+  return (
     <div className="profile">
-      <ProfileCard user={users} key={users.id} />
+      <ProfileCard user={user} />
       <div>
-        <ItemCardList itemsData={itemsData} />
+        <ItemCardList list={user.shareditems} />
       </div>
     </div>
+  );
 };
 
 export default Profile;

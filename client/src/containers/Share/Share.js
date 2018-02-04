@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./styles.css";
+
 import {
   Step,
   Stepper,
@@ -12,9 +14,13 @@ import ShareCard from "./ShareCard";
 
 const Share = () => {
   return (
-    <div>
-      <ShareCard />
-      <ShareStepper />
+    <div className="shareInnerWrapper">
+      <div>
+        <ShareCard />
+      </div>
+      <div>
+        <ShareStepper />
+      </div>
     </div>
   );
 };

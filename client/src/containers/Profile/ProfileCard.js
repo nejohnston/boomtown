@@ -9,7 +9,7 @@ import Gravatar from "react-gravatar";
 
 import "../Profile/styles.css";
 
-const ProfileCard = ({ item, borrowed }) => (
+const ProfileCard = ({ user }) => (
   <Paper
     style={{
       margin: "2rem auto",
@@ -18,14 +18,14 @@ const ProfileCard = ({ item, borrowed }) => (
   >
     <header className="profileHeader">
       <div className="profileName">
-        <h2>{item.itemowner.fullname} </h2>
-        <p>{item.itemowner.bio}</p>
+        <h2>{user.fullname} </h2>
+        <p>{user.bio}</p>
       </div>
       {/* <p>{this.props.borrowed}</p> */}
       <div className="profileMeta">
         <Gravatar
           className="gravatarAvatar"
-          email={item.itemowner.email}
+          email={user.email}
           size={180}
         />
       </div>

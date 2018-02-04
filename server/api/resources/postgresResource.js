@@ -48,9 +48,20 @@ module.exports = async app => {
       });
     },
     getSharedItems(userid) {
-      return new Promise((resolve, resolvers) => {
+      return new Promise((resolve, reject) => {
         client.query(
-          "SELECT * FROM items WHERE item.itemowner = $1",
+          "SELECT * FROM items WHERE itemowner = $1",
+          [userid],
+          (err, data) => {
+            resolve(data.rows);
+          }
+        );
+      });
+    },
+    getBorrowedItems(userid) {
+      return new Promise((resolve, reject) => {
+        client.query(
+          "SELECT * FROM items WHERE borrower = $1",
           [userid],
           (err, data) => {
             resolve(data.rows);

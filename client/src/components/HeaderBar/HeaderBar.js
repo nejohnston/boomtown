@@ -21,12 +21,14 @@ import "./styles.css";
 
 const HeaderButtons = () => (
   <div className="headerButtonWrapper">
-    <RaisedButton
-      className="headerButton"
-      label="My Profile"
-      primary={true}
-      onClick={() => firebaseAuth.currentUser.uid}
-    />
+    <Link to={`/profile/${firebaseAuth.currentUser.uid}`}>
+      <RaisedButton
+        className="headerButton"
+        label="My Profile"
+        primary={true}
+        onClick={() => firebaseAuth.currentUser.uid}
+      />
+    </Link>
     <RaisedButton
       secondary={true}
       className="headerButton"

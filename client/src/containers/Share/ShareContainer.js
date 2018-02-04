@@ -13,6 +13,10 @@ import FlatButton from "material-ui/FlatButton";
 
 export default class ShareContainer extends Component {
   render() {
-    return <Share />;
+    return (
+      <div className="shareContainer">
+        <Share />
+      </div>
+    );
   }
 }
