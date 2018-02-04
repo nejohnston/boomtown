@@ -10,6 +10,10 @@ import {
   CardText
 } from "material-ui/Card";
 
+import { firebaseAuth } from "../../config/firebase";
+
+import { Link } from "react-router-dom";
+
 import RaisedButton from "material-ui/RaisedButton";
 
 import placeholderImage from "../../images/item-placeholder.jpg";
@@ -24,16 +28,19 @@ const ShareCard = ({ item, user }) => (
       <CardMedia>
         <img src={placeholderImage} alt="placeholder image" />
       </CardMedia>
-      <CardHeader
-      //   title={item.itemowner.fullname}
-      //   subtitle={moment(item.created).fromNow()}
-      //   avatar={<Gravatar email={item.itemowner.email}
-      />
+      <Link to={`/profile/${firebaseAuth.currentUser.uid}`}>
+        <CardHeader
+          subtitle="A few seconds ago" // {moment(item.created).fromNow()}
+          avatar={
+            <Gravatar email={firebaseAuth.currentUser.email} />
+          }
+        />
+      </Link>
       <CardTitle
-      // title={item.title}
-      // subtitle={item.tags.map(i => i.title).join(", ")}
+        title="Amazing Item Title" // {item.title}
+        // subtitle={item.tags.map(i => i.title).join(", ")}
       />
-      <CardText>"item.description"</CardText>
+      <CardText>Profound item description.</CardText>
       <CardActions />
     </Card>
   </div>

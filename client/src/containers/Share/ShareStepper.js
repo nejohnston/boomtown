@@ -72,14 +72,11 @@ class ShareStepper extends Component {
       >
         <Stepper activeStep={stepIndex} orientation="vertical">
           <Step>
-            <StepLabel>Select campaign settings</StepLabel>
+            <StepLabel>Add An Image</StepLabel>
             <StepContent>
               <p>
-                For each ad campaign that you create, you can
-                control how much you're willing to spend on
-                clicks and conversions, which networks and
-                geographical locations you want your ads to show
-                on, and more.
+                We live in a visual culture. Upload an image of
+                the item you're sharing
               </p>
               {this.renderStepActions(0)}
             </StepContent>

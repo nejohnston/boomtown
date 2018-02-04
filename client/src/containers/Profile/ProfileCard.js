@@ -34,11 +34,4 @@ const ProfileCard = ({ user }) => (
   </Paper>
 );
 
-const mapStateToProps = state => ({
-  isLoading: state.items.isLoading,
-  itemsData: state.items.itemsData,
-  itemTags: state.items.itemTags,
-  error: state.items.error
-});
-
-export default connect(mapStateToProps)(ProfileCard);
+export default ProfileCard;
