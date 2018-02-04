@@ -21,7 +21,8 @@ const ProfileCard = ({ user }) => (
         <h2>{user.fullname} </h2>
         <p>{user.bio}</p>
       </div>
-      {/* <p>{this.props.borrowed}</p> */}
+      <p>{user.shareditems.length}</p>
+      <p>{user.borroweditems.length}</p>
       <div className="profileMeta">
         <Gravatar
           className="gravatarAvatar"
