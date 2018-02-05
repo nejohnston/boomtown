@@ -51,7 +51,7 @@ const HeaderBar = ({ itemTags, dispatch }) => {
     >
       <div>
         <div className="titleWrapper">
-          <a href="/">
+          <a href="/items">
             <img
               src={Logo}
               alt="Boomtown"

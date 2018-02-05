@@ -23,10 +23,11 @@
 .shareCardWrapper {
   max-width: 300px;
 }
-.selectFieldWrapper {
-  margin-left: 0;
-}
 
 .stepperWrapper p {
   color: #fff;
+}
+
+.hideFileInput {
+  display: none;
 }

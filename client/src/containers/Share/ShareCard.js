@@ -10,23 +10,27 @@ import {
   CardText
 } from "material-ui/Card";
 
+import { connect } from "react-redux";
+
 import { firebaseAuth } from "../../config/firebase";
 
 import { Link } from "react-router-dom";
 
 import RaisedButton from "material-ui/RaisedButton";
 
-import placeholderImage from "../../images/item-placeholder.jpg";
-
 import Gravatar from "react-gravatar";
 
 import "./styles.css";
 
-const ShareCard = ({ item, user }) => (
+const ShareCard = ({
+  updateTitle,
+  updateDescription,
+  imageUrl
+}) => (
   <div className="shareCardWrapper">
     <Card>
       <CardMedia>
-        <img src={placeholderImage} alt="placeholder image" />
+        <img src={imageUrl} alt="placeholder image" />
       </CardMedia>
       <Link to={`/profile/${firebaseAuth.currentUser.uid}`}>
         <CardHeader
@@ -46,4 +50,10 @@ const ShareCard = ({ item, user }) => (
   </div>
 );
 
-export default ShareCard;
+const mapStateToProps = state => ({
+  imageUrl: state.share.imageUrl,
+  updateTitle: state.share.updateTitle,
+  updateDescription: state.share.updateDescription
+});
+
+export default connect(mapStateToProps)(ShareCard);

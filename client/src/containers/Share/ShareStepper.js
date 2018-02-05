@@ -9,14 +9,25 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 
+import {
+  shareUpdateImage,
+  shareUpdateTitle,
+  shareUpdateDescription,
+  toggleImageSelected,
+  resetShareCardFields
+} from "../../redux/modules/share";
+
 import firebase from "firebase";
+import { firebaseAuth } from "../../config/firebase";
 
 import gql from "graphql-tag";
 import { graphql, compose } from "react-apollo";
 
-import connect from "react-redux";
+import { connect } from "react-redux";
 
 import Filter from "../../components/FilterField/FilterField";
+
+import { withRouter } from "react-router-dom";
 
 /**
  * Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.
@@ -30,6 +41,30 @@ class ShareStepper extends Component {
   state = {
     finished: false,
     stepIndex: 0
+  };
+
+  openFileDialog = () =>
+    document.getElementById("image").click();
+
+  uploadFile = input => {
+    // create firebase storage reference
+    const ref = firebase.storage().ref();
+    // get the file to be uploaded from the input[type="file"]
+    const file = input.target.files[0];
+    const name = `${+new Date()}-${file.name}`;
+    const metadata = {
+      contentType: file.type
+    };
+    const task = ref.child(name).put(file, metadata);
+    task
+      .then(snapshot => {
+        const url = snapshot.downloadURL;
+        // set the url in the redux storage
+        this.props.shareUpdateImage(url);
+        // let the user proceed to the Next step
+        this.props.toggleImageSelected(false);
+      })
+      .catch(error => error.message);
   };
 
   handleUpdateTitle = ({ target: { value } }) => {
@@ -93,7 +128,21 @@ class ShareStepper extends Component {
                 We live in a visual culture. Upload an image of
                 the item you're sharing
               </p>
-              <RaisedButton label="Select An Image" />
+              <RaisedButton
+                label="Select An Image"
+                onClick={this.openFileDialog}
+              >
+                <div className="hideFileInput">
+                  {" "}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={this.uploadFile}
+                    hidden
+                    id="image"
+                  />
+                </div>
+              </RaisedButton>
               {this.renderStepActions(0)}
             </StepContent>
           </Step>
@@ -165,23 +214,23 @@ const mapStateToProps = state => ({
   descriptionUpdate: state.share.descriptionUpdate,
   imageUrl: state.share.imageUrl,
   itemTags: state.items.itemTags,
-  imgSelect: state.share.imageSelected
+  toggled: state.share.toggled
 });
 const mapDispatchToProps = dispatch => ({
-  updateTitle: text => {
-    dispatch(updateTitleField(text));
+  shareUpdateTitle: text => {
+    dispatch(shareUpdateTitle(text));
   },
-  updateDescription: text => {
-    dispatch(updateDescriptionField(text));
+  shareUpdateDescription: text => {
+    dispatch(shareUpdateDescription(text));
   },
-  updateImageField: imageUrl => {
-    dispatch(updateImageField(imageUrl));
+  shareUpdateImage: imageUrl => {
+    dispatch(shareUpdateImage(imageUrl));
   },
-  toggleImageSelected: onOrOff => {
-    dispatch(toggleImageSelected(onOrOff));
+  toggleImageSelected: toggled => {
+    dispatch(toggleImageSelected(toggled));
   },
-  reset: () => {
-    dispatch(resetFields());
+  resetShareCardFields: () => {
+    dispatch(resetShareCardFields());
   }
 });
 
