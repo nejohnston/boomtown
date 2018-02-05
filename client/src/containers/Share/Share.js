@@ -14,11 +14,11 @@ import ShareCard from "./ShareCard";
 
 const Share = () => {
   return (
-    <div className="shareInnerWrapper">
-      <div>
+    <div className="shareContainer">
+      <div className="shareComponentLeft">
         <ShareCard />
       </div>
-      <div>
+      <div className="shareComponentRight">
         <ShareStepper />
       </div>
     </div>

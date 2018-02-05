@@ -5,8 +5,11 @@ import {
   StepLabel,
   StepContent
 } from "material-ui/Stepper";
+import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
+
+import Filter from "../../components/FilterField/FilterField";
 
 /**
  * Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.
@@ -46,7 +49,6 @@ class ShareStepper extends Component {
           label={stepIndex === 2 ? "Finish" : "Next"}
           disableTouchRipple={true}
           disableFocusRipple={true}
-          primary={true}
           onClick={this.handleNext}
           style={{ marginRight: 12 }}
         />
@@ -67,9 +69,7 @@ class ShareStepper extends Component {
     const { finished, stepIndex } = this.state;
 
     return (
-      <div
-        style={{ maxWidth: 380, maxHeight: 400, margin: "auto" }}
-      >
+      <div>
         <Stepper activeStep={stepIndex} orientation="vertical">
           <Step>
             <StepLabel>Add An Image</StepLabel>
@@ -78,29 +78,49 @@ class ShareStepper extends Component {
                 We live in a visual culture. Upload an image of
                 the item you're sharing
               </p>
+              <RaisedButton label="Select An Image" />
               {this.renderStepActions(0)}
             </StepContent>
           </Step>
           <Step>
-            <StepLabel>Create an ad group</StepLabel>
+            <StepLabel>Add a Title & Description</StepLabel>
             <StepContent>
               <p>
-                An ad group contains one or more ads which target
-                a shared set of keywords.
+                Folks need to know what you're sharing. Give them
+                a clue by adding a title & description.
               </p>
+              <TextField
+                hintText="Title"
+                floatingLabelText="Title"
+                floatingLabelFixed={true}
+              />
+              <br />
+              <br />
+              <TextField
+                hintText="Description"
+                floatingLabelText="Description"
+                floatingLabelFixed={true}
+                multiLine={true}
+                rows={4}
+                rowsMax={4}
+              />
+              <br />
               {this.renderStepActions(1)}
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel>Categorize Your Item</StepLabel>
+            <StepContent>
+              <Filter />
+              {this.renderStepActions(2)}
             </StepContent>
           </Step>
           <Step>
             <StepLabel>Create an ad</StepLabel>
             <StepContent>
               <p>
-                Try out different ad text to see what brings in
-                the most customers, and learn how to enhance your
-                ads using features like ad extensions. If you run
-                into any problems with your ads, find out how to
-                tell if they're running and how to resolve
-                approval issues.
+                Great! If you're happy with everything, tap the
+                button.
               </p>
               {this.renderStepActions(2)}
             </StepContent>
@@ -124,5 +144,28 @@ class ShareStepper extends Component {
     );
   }
 }
+
+const addItem = gql`
+  mutation addItem(
+    $title: String
+    $description: String
+    $imageurl: String
+    $itemowner: ID
+    $tags: [TagInput]
+  ) {
+    addItem(
+      newItem: {
+        title: $title
+        description: $description
+        imageurl: $imageurl
+        itemowner: $itemowner
+        tags: $tags
+      }
+    ) {
+      created
+      id
+    }
+  }
+`;
 
 export default ShareStepper;
