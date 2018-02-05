@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 
 import Gravatar from "react-gravatar";
+import moment from "moment";
 
 import "./styles.css";
 
@@ -34,7 +35,7 @@ const ShareCard = ({
       </CardMedia>
       <Link to={`/profile/${firebaseAuth.currentUser.uid}`}>
         <CardHeader
-          subtitle="A few seconds ago" // {moment(item.created).fromNow()}
+          subtitle={moment().fromNow()}
           avatar={
             <Gravatar email={firebaseAuth.currentUser.email} />
           }

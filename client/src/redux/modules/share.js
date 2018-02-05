@@ -67,7 +67,7 @@ export default function(
           : DEFAULT_DESCRIPTION_TEXT
       };
     }
-    case TOGGLE_IMAGE_SELECTED: {
+    case SHARE_TOGGLE_IMAGE_SELECTED: {
       return { ...state, imageSelected: action.payload };
     }
     default:
