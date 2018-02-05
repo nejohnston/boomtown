@@ -84,7 +84,7 @@ class ShareStepper extends Component {
     const { finished, stepIndex } = this.state;
 
     return (
-      <div>
+      <div className="stepperWrapper">
         <Stepper activeStep={stepIndex} orientation="vertical">
           <Step>
             <StepLabel>Add An Image</StepLabel>
@@ -160,6 +160,31 @@ class ShareStepper extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  titleUpdate: state.share.titleUpdate,
+  descriptionUpdate: state.share.descriptionUpdate,
+  imageUrl: state.share.imageUrl,
+  itemTags: state.items.itemTags,
+  imgSelect: state.share.imageSelected
+});
+const mapDispatchToProps = dispatch => ({
+  updateTitle: text => {
+    dispatch(updateTitleField(text));
+  },
+  updateDescription: text => {
+    dispatch(updateDescriptionField(text));
+  },
+  updateImageField: imageUrl => {
+    dispatch(updateImageField(imageUrl));
+  },
+  toggleImageSelected: onOrOff => {
+    dispatch(toggleImageSelected(onOrOff));
+  },
+  reset: () => {
+    dispatch(resetFields());
+  }
+});
+
 const addItem = gql`
   mutation addItem(
     $title: String
@@ -184,6 +209,6 @@ const addItem = gql`
 `;
 
 export default compose(
-  graphql(addItem)
-  // connect(mapStateToProps, mapDispatchToProps)
-)(ShareStepper);
+  graphql(addItem),
+  connect(mapStateToProps, mapDispatchToProps)
+)(withRouter(ShareStepper));

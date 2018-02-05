@@ -8,5 +8,6 @@ export default combineReducers({
   borrowed: borrowedReducer,
   items: itemsReducer,
   profile: profileReducer,
-  auth: authReducer
+  auth: authReducer,
+  share: shareReducer
 });
