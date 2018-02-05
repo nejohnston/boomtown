@@ -7,6 +7,7 @@ const SHARE_TOGGLE_IMAGE_SELECTED =
 
 const DEFAULT_DESCRIPTION_TEXT = "Profound Item Description";
 const DEFAULT_TITLE_TEXT = "Amazing Item";
+const DEFAULT_IMAGE = "";
 
 export const shareUpdateTitle = titleUpdate => ({
   type: "SHARE_UPDATE_TITLE",
@@ -32,3 +33,29 @@ export const toggleImageSelected = selectedImage => ({
   type: "SHARE_TOGGLE_IMAGE_SELECTED",
   payload: selectedImage
 });
+
+export default function(
+  state = {
+    titleUpdate: DEFAULT_TITLE_TEXT,
+    descriptionUpdate: DEFAULT_DESCRIPTION_TEXT
+  },
+  action
+) {
+  switch (action.type) {
+    case SHARE_UPDATE_TITLE: {
+      return {
+        ...state,
+        titleUpdate: action.payload
+          ? action.payload
+          : DEFAULT_TITLE_TEXT
+      };
+    },
+    case SHARE_UPDATE_DESCRIPTION: {
+        return {
+        ..state,
+        descriptionUpdate: action.payload ? action.payload : DEFAULT_DESCRIPTION_TEXT
+    };}
+    default:
+      return state;
+  }
+}
