@@ -9,6 +9,13 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 
+import firebase from "firebase";
+
+import gql from "graphql-tag";
+import { graphql, compose } from "react-apollo";
+
+import connect from "react-redux";
+
 import Filter from "../../components/FilterField/FilterField";
 
 /**
@@ -23,6 +30,14 @@ class ShareStepper extends Component {
   state = {
     finished: false,
     stepIndex: 0
+  };
+
+  handleUpdateTitle = ({ target: { value } }) => {
+    this.props.updateTitle(value);
+  };
+
+  handleUpdateDescription = ({ target: { value } }) => {
+    this.props.updateDescription(value);
   };
 
   handleNext = () => {
@@ -46,7 +61,7 @@ class ShareStepper extends Component {
     return (
       <div style={{ margin: "12px 0" }}>
         <RaisedButton
-          label={stepIndex === 2 ? "Finish" : "Next"}
+          label={stepIndex === 3 ? "Confirm" : "Next"}
           disableTouchRipple={true}
           disableFocusRipple={true}
           onClick={this.handleNext}
@@ -168,4 +183,7 @@ const addItem = gql`
   }
 `;
 
-export default ShareStepper;
+export default compose(
+  graphql(addItem)
+  // connect(mapStateToProps, mapDispatchToProps)
+)(ShareStepper);
