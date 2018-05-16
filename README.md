@@ -1,4 +1,22 @@
 # Boomtown Starter
+# RED-adp-01-Boomtown
+
+Red Academy App Development Project 01: Boomtown Web App
+
+## About The Project
+
+This project is coursework for RED Academy's app development program. Boomtown is an app for sharing things.
+
+## Technologies
+
+* JavaScript / JSON
+* Node
+* Express
+* React
+* Material UI
+* Redux
+* Apollo / GraphQL
+* PostgreSQL
 
 ## Installation
 
@@ -10,49 +28,24 @@ cd client && npm install
 
 ## Start-up
 
-From inside the `client` directory, run:
+1: Serve the database of items by starting Postgres
+
+2: In `server/graphql` start the GraphQL server:
 
 ```bash
-npm run dev
+npm start
 ```
 
-to open json-server
-json-server --watch db.json -p 4000
+3: In the `client` directory, start the client:
 
-npm install apollo-client-preset react-apollo graphql-tag graphql --save
-ApolloProvider
+```bash
+npm start
+```
 
-query getItem($itemid:ID){
-item(id:$itemid) {
-title
-available
-}
-}
+4: If needed, access the GraphiQL UI at:
 
-query getUser($userid:ID) {
-user(id:$userid)
-{
-fullname
-}
-}
-query getUsers {
-users {
-fullname
-}
-}
-query getItems{
-items{
-title
-}
-}
-{
-"userid": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
-"itemid": "3"
-}
+```
+http://localhost:3002/graphiql
+```
 
-const mapStateToProps = state => ({
-isLoading: state.profile.isLoading,
-itemsData: state.profile.itemsData,
-error: state.profile.error
-});
-Happy coding :)
+Happy Happy Coding :)
