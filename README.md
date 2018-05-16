@@ -1,11 +1,9 @@
-# Boomtown Starter
-# RED-adp-01-Boomtown
-
-Red Academy App Development Project 01: Boomtown Web App
+# Boomtown 
+My first RED Academy App Development project.
 
 ## About The Project
 
-This project is coursework for RED Academy's app development program. Boomtown is an app for sharing things.
+Boomtown is an app for sharing and borrowing things.
 
 ## Technologies
 
@@ -22,7 +20,7 @@ This project is coursework for RED Academy's app development program. Boomtown i
 
 Download the repo, then run:
 
-```bash
+```
 cd client && npm install
 ```
 
@@ -32,13 +30,15 @@ cd client && npm install
 
 2: In `server/graphql` start the GraphQL server:
 
-```bash
+```
+cd server
 npm start
 ```
 
 3: In the `client` directory, start the client:
 
-```bash
+```
+cd client
 npm start
 ```
 
