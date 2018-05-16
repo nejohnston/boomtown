@@ -48,7 +48,7 @@ export default function(
     case SHARE_UPDATE_IMAGE: {
       return {
         ...state,
-        imageUrl: DEFAULT_IMAGE
+        imageUrl: action.payload
       };
     }
     case SHARE_UPDATE_TITLE: {
@@ -68,7 +68,7 @@ export default function(
       };
     }
     case SHARE_TOGGLE_IMAGE_SELECTED: {
-      return { ...state, imageSelected: action.payload };
+      return { ...state, toggled: action.payload };
     }
     default:
       return state;

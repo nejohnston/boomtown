@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
 
-import {
-  Step,
-  Stepper,
-  StepLabel,
-  StepContent
-} from "material-ui/Stepper";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import ShareStepper from "./ShareStepper";

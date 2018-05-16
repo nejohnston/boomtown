@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import {
@@ -16,16 +16,14 @@ import { firebaseAuth } from "../../config/firebase";
 
 import { Link } from "react-router-dom";
 
-import RaisedButton from "material-ui/RaisedButton";
-
 import Gravatar from "react-gravatar";
 import moment from "moment";
 
 import "./styles.css";
 
 const ShareCard = ({
-  updateTitle,
-  updateDescription,
+  titleUpdate,
+  descriptionUpdate,
   imageUrl
 }) => (
   <div className="shareCardWrapper">
@@ -41,11 +39,8 @@ const ShareCard = ({
           }
         />
       </Link>
-      <CardTitle
-        title="Amazing Item Title" // {item.title}
-        // subtitle={item.tags.map(i => i.title).join(", ")}
-      />
-      <CardText>Profound item description.</CardText>
+      <CardTitle title={titleUpdate} subtitle="" />
+      <CardText>{descriptionUpdate}</CardText>
       <CardActions />
     </Card>
   </div>
@@ -53,8 +48,8 @@ const ShareCard = ({
 
 const mapStateToProps = state => ({
   imageUrl: state.share.imageUrl,
-  updateTitle: state.share.updateTitle,
-  updateDescription: state.share.updateDescription
+  titleUpdate: state.share.titleUpdate,
+  descriptionUpdate: state.share.descriptionUpdate
 });
 
 export default connect(mapStateToProps)(ShareCard);

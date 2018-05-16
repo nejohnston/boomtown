@@ -5,7 +5,7 @@ import {
   StepLabel,
   StepContent
 } from "material-ui/Stepper";
-import TextField from "material-ui/TextField";
+import ValidatedTextField from "../../components/ValidatedTextField";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 
@@ -59,6 +59,7 @@ class ShareStepper extends Component {
     task
       .then(snapshot => {
         const url = snapshot.downloadURL;
+        console.log(snapshot.downloadURL);
         // set the url in the redux storage
         this.props.shareUpdateImage(url);
         // let the user proceed to the Next step
@@ -68,11 +69,11 @@ class ShareStepper extends Component {
   };
 
   handleUpdateTitle = ({ target: { value } }) => {
-    this.props.updateTitle(value);
+    this.props.shareUpdateTitle(value);
   };
 
   handleUpdateDescription = ({ target: { value } }) => {
-    this.props.updateDescription(value);
+    this.props.shareUpdateDescription(value);
   };
 
   handleNext = () => {
@@ -153,22 +154,16 @@ class ShareStepper extends Component {
                 Folks need to know what you're sharing. Give them
                 a clue by adding a title & description.
               </p>
-              <TextField
-                hintText="Title"
-                floatingLabelText="Title"
-                floatingLabelFixed={true}
+              <ValidatedTextField
+                type="text"
+                label="Title"
+                handleChange={this.handleUpdateTitle}
               />
-              <br />
-              <br />
-              <TextField
-                hintText="Description"
-                floatingLabelText="Description"
-                floatingLabelFixed={true}
-                multiLine={true}
-                rows={4}
-                rowsMax={4}
+              <ValidatedTextField
+                type="text"
+                label="Description"
+                handleChange={this.handleUpdateDescription}
               />
-              <br />
               {this.renderStepActions(1)}
             </StepContent>
           </Step>
