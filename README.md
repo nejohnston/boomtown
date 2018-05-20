@@ -18,7 +18,7 @@ Boomtown is an app for sharing and borrowing things.
 
 ## Installation
 
-Download the repo, then run:
+After downloading the repository, go to the root of the file and run:
 
 ```
 cd client && npm install
@@ -26,7 +26,7 @@ cd client && npm install
 
 ## Start-up
 
-1: Serve the database of items by starting Postgres
+1: Serve the database of items by starting PostgreSQL
 
 2: In `server/graphql` start the GraphQL server:
 
