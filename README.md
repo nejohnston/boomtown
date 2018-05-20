@@ -48,4 +48,14 @@ npm start
 http://localhost:3002/graphiql
 ```
 
+## Todo
+
+1: Create SQL script for README so items can be added locally to the pg database.
+
+2: Upload to Heroku so pg database is not just local.
+
+3: Finish GraphQL mutation for the adding item feature.
+
+4: Finish borrowing feature.
+
 Happy Happy Coding :)
