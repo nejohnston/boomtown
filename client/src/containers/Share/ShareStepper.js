@@ -41,7 +41,7 @@ class ShareStepper extends Component {
   state = {
     finished: false,
     stepIndex: 0,
-    nextStep: false
+    nextStep: true
   };
 
   openFileDialog = () =>
@@ -65,23 +65,27 @@ class ShareStepper extends Component {
         this.props.shareUpdateImage(url);
         // let the user proceed to the Next step
         this.props.toggleImageSelected(false);
+        this.setState({nextStep: false})
       })
       .catch(error => error.message);
   };
 
   handleUpdateTitle = ({ target: { value } }) => {
     this.props.shareUpdateTitle(value);
+    this.setState({nextStep: false})
   };
 
   handleUpdateDescription = ({ target: { value } }) => {
     this.props.shareUpdateDescription(value);
+    this.setState({nextStep: false})
   };
 
   handleNext = () => {
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 2
+      finished: stepIndex >= 2,
+      nextStep: true
     });
   };
 
@@ -103,6 +107,7 @@ class ShareStepper extends Component {
           disableFocusRipple={true}
           onClick={this.handleNext}
           style={{ marginRight: 12 }}
+          disabled={this.state.nextStep}
         />
         {step > 0 && (
           <FlatButton
@@ -159,6 +164,7 @@ class ShareStepper extends Component {
                 required
                 type="text"
                 label="Title"
+                id="Title"
                 handleChange={this.handleUpdateTitle}
               />
               <ValidatedTextField
@@ -188,6 +194,7 @@ class ShareStepper extends Component {
             </StepContent>
           </Step>
         </Stepper>
+
       </div>
     );
   }

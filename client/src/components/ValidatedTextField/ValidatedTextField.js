@@ -21,7 +21,7 @@ const styles = {
 const ValidatedTextField = ({ label, handleChange, value, type }) => (
   <TextField
     style={styles.fieldStyle}
-    hintText={label}
+    placeholder={label}
     floatingLabelText={label}
     errorStyle={styles.errorStyle}
     underlineFocusStyle={styles.underlineStyle}
