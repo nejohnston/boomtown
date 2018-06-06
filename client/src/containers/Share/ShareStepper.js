@@ -40,7 +40,8 @@ import { withRouter } from "react-router-dom";
 class ShareStepper extends Component {
   state = {
     finished: false,
-    stepIndex: 0
+    stepIndex: 0,
+    nextStep: false
   };
 
   openFileDialog = () =>
@@ -155,11 +156,13 @@ class ShareStepper extends Component {
                 a clue by adding a title & description.
               </p>
               <ValidatedTextField
+                required
                 type="text"
                 label="Title"
                 handleChange={this.handleUpdateTitle}
               />
               <ValidatedTextField
+                required
                 type="text"
                 label="Description"
                 handleChange={this.handleUpdateDescription}
@@ -185,20 +188,6 @@ class ShareStepper extends Component {
             </StepContent>
           </Step>
         </Stepper>
-        {finished && (
-          <p style={{ margin: "20px 0", textAlign: "center" }}>
-            <a
-              href="#"
-              onClick={event => {
-                event.preventDefault();
-                this.setState({ stepIndex: 0, finished: false });
-              }}
-            >
-              Click here
-            </a>{" "}
-            to reset the example.
-          </p>
-        )}
       </div>
     );
   }
