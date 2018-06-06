@@ -23,6 +23,10 @@ After downloading the repository, go to the root of the file and run:
 ```
 cd client && npm install
 ```
+Then:
+```
+cd ../server && npm install
+```
 
 ## Start-up
 
@@ -32,6 +36,7 @@ cd client && npm install
 
 ```
 cd server
+npm install
 npm start
 ```
 

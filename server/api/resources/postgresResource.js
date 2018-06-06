@@ -1,16 +1,23 @@
-const { Client } = require("pg");
+const {
+  Client
+} = require("pg");
 
-const tq = tags =>
+const getTagsForFilter = tags =>
   tags.map((id, i) => `($1, $${i + 2})`).join(", ");
 
 module.exports = async app => {
-  const client = new Client({
-    user: app.get("PGUSER"),
-    host: app.get("PGHOST"),
-    database: app.get("PGDATABASE"),
-    password: app.get("PGPASSWORD"),
-    port: app.get("PGPORT")
-  });
+  const client =
+    // new Client({
+    //   connectionString: process.env.DATABASE_URL
+    //   ssl: true
+    // })
+    new Client({
+      user: app.get("PGUSER"),
+      host: app.get("PGHOST"),
+      database: app.get("PGDATABASE"),
+      password: app.get("PGPASSWORD"),
+      port: app.get("PGPORT")
+    });
 
   await client.connect();
 
@@ -25,8 +32,7 @@ module.exports = async app => {
     getSingleItem(id) {
       return new Promise((resolve, reject) => {
         client.query(
-          "SELECT * FROM items WHERE id = $1",
-          [id],
+          "SELECT * FROM items WHERE id = $1", [id],
           (err, data) => {
             resolve(data.rows);
           }
@@ -39,8 +45,7 @@ module.exports = async app => {
           `SELECT * FROM tags 
             INNER JOIN itemtags 
             ON itemtags.tagid = tags.id 
-            WHERE itemtags.itemid=$1`,
-          [itemid],
+            WHERE itemtags.itemid=$1`, [itemid],
           (err, data) => {
             resolve(data.rows);
           }
@@ -50,8 +55,7 @@ module.exports = async app => {
     getSharedItems(userid) {
       return new Promise((resolve, reject) => {
         client.query(
-          "SELECT * FROM items WHERE itemowner = $1",
-          [userid],
+          "SELECT * FROM items WHERE itemowner = $1", [userid],
           (err, data) => {
             resolve(data.rows);
           }
@@ -61,8 +65,7 @@ module.exports = async app => {
     getBorrowedItems(userid) {
       return new Promise((resolve, reject) => {
         client.query(
-          "SELECT * FROM items WHERE borrower = $1",
-          [userid],
+          "SELECT * FROM items WHERE borrower = $1", [userid],
           (err, data) => {
             resolve(data.rows);
           }
