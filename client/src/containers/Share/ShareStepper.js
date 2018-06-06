@@ -254,5 +254,8 @@ const addItem = gql`
 
 export default compose(
   graphql(addItem),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(withRouter(ShareStepper));
