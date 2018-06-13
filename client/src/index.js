@@ -23,6 +23,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import Layout from "./components/Layout";
 import Login from "./containers/Login";
+import LoginContainer from "./containers/Login/LoginContainer";
 import Items from "./containers/Items";
 import ItemsContainer from "./containers/Items";
 import Profile from "./containers/Profile";
@@ -37,7 +38,6 @@ import {
   userLoading
 } from "./redux/modules/auth";
 import { firebaseAuth } from "./config/firebase";
-import LoginContainer from "./containers/Login/LoginContainer";
 
 // local variable gotProfile's purpose is so the subscribe
 // method is only run once.
